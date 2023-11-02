@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Clases</h1>
+    <h2>Definición:</h2>
+    <p>Las clases sonlos modelos necesarios para la creación de objetos. Por lo que en resumidas cuentas modela el estado y comportamiento
+        de objetos reales
+    </p>
+    <p>Una clase tiene principalmente tres componentes:</p>
+    <ul>
+        <li>Atributos, propiedades o campos.</li>
+        <li>Métodos o funciones</li>
+        <li>Constructores</li>
+    </ul>
+    <h2>Declaración</h2>
+    <section>
+        <p>Debe corresponder una sóla clase por archivo y debe tener el mismo nombre la clase que el archio.</p>
+        <p>La clase debe tener su primera letra en Mayúscula y el resto en singular. Corresponde al nombre de un objecto. Si
+            el nombre se compone de dos palabras la segunda palabra debe aparecer junto a la primera sin espacios y con su primera letra
+            en mayúsculas. Es lo que se conoce como CamelCase.        
+        </p>
+        <p>Se construye de la siguiente manera.</p>
+        <ul>
+            <li>modificadores de acceso. Aunque suele ser siempre public</li>
+            <li>class palabra reservada.</li>
+            <li>NameClass: El nombre de la clase.</li>
+            <span>Optionales</span>
+            <li>extends NameClass: Las clases de las que extiende. Si son varias puedes separarlas con coma.</li>
+            <li>implements NameClass: Las interfaces que implementa. Si son varias puedes separarlas con coma.</li>
+            <li>{} Llave donde iran los principales componentes con los cuales se componen una clase (atributos, metodos y constructores).
+                </li>
+        </ul>
+        <p>Por ejemplo:</p>
+        <code>
+            class MyClass extends MySuperClass implements YourInterface {
+                // field, constructor, and method declarations
+            }
+        </code>
+    </section>
+    <h2>Atributos o propiedades de una clase.</h2>
+    <section>
+        <p>Hay varios tipos de variables que podemos encontrar en una clase: Atributos, variables locales y parametros o argumentos de los métodos.</p>
+        <p>En esta sección nos centraremos en los atributos de una clase.</p>
+        <p>Se suele declarar de la siguiente manera</p>
+        <ol>
+            <li>Modificador de acceso: private("El más utilizado"), protect, public, default.</li>
+            <li>Tipo de Objeto: primitivo, clase ...</li>
+            <li>Nombre de la propiedad: Suele ser siempre en minúscula. No se tienen porque inicializar a no ser que quieras
+                que coja un valor por defecto.
+            </li>
+        </ol>
+    </section>
+
+    <h2>Métodos o funciones</h2>
+    <section>
+            <p>Son las acciones de nuestras clases.
+                Los únicos elementos requeridos de una declaración de método son el tipo de retorno del método, el nombre, 
+                un par de paréntesis ()y un cuerpo entre llaves {}.</p>
+    </section>
+    <h2>Constructores</h2>
+    <section>
+        <p>Tiene el mismo nombre que la clase puede tener modificadores de acceso pero no devuelve nada por lo que no hay que poner
+            ni void ni ningun tipo de Clase.
+        </p>
+        <p>El modifador por defecto es public aunque se podría poner private si queremos evitar que se pueda instanciar y utilizar 
+            unicamente métodos estáticos.
+        </p>
+        <p>Puede existir una sobrecarga de métodos que se diferenciaran unos de otros por los parametros de este</p>
+        <p>Puede que no pongamos ningún constructor en su defecto existe un constructor sin parametros.</p>
+    </section>
+</body>
+</html>

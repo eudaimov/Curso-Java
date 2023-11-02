@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argumentos Variables en los métodos</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Argumentos Variables en los métodos</h1>
+    <p>Se utilizar para pasar argumentos a una <strong>función</strong> o <strong>constructor</strong> y desconzco la cantidad de argumentos los 
+        cuales voy a pasar.
+    </p>
+    <p>Por ejemplo:</p>
+    <code>
+        public void metodo(Object ... varArgs){
+                Object objecto = varArgs[0];
+        }
+    </code>
+    <code>
+        public void metodo2(int ... varArgs){
+            int cantidad = varArgs.lenght;
+            int numero = varArgs[0];
+        }
+    </code>
+    <p>Otro ejemplo un poco más extenso:</p>
+    <code>
+        public class argumentosVariables {
+            public static void main(String[] args) {
+                int[] numeros = {24,7,18,96,87,45};
+                metodoArgumentosVariables(numeros[0], numeros[3], numeros[1]);
+            }
+        
+            public static void metodoArgumentosVariables(int ... args){
+                int cantidad = args.length;
+                System.out.println("La cantidad de argumentos pasados son "+cantidad);
+                System.out.println("Y sus valores son");
+                for (int valorNumeroArgumento: args
+                     ) {
+                    System.out.println(valorNumeroArgumento);
+                }
+            }
+        }
+    </code>
+</body>
+</html>

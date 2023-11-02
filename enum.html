@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Java - Enum</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>Enum</h1>
+    <h2>Definición</h2>
+    <p>Es la abreviatura de enumeración. Son unos tipos especiales de clases que se utilizan para representar un
+        conjunto fijo
+        de valores. Son útiles cuando tienes un conjunto predefinido de opciones que no deberían cambiar durante toda la
+        ejecución del programa.
+    </p>
+    <p>Pueden ir dentro de otra clase</p>
+    <h2>Construcción</h2>
+    <p>Puedes declarar o crear un enum de la siguiente manera:</p>
+    <code>
+        enum DíaDeLaSemana {
+            LUNES, MARTES, MIÉRCOLES, JUEVES, VIERNES, SÁBADO, DOMINGO
+        }
+    </code>
+    <p>
+        En este ejemplo, hemos creado un enum llamado DíaDeLaSemana
+        que contiene siete constantes que representan los días de la semana.
+    </p>
+    <p>Siempre al igual que las clases su nombre debe empezar con mayúsculas.</p>
+    <p>Los valores o constantes deben estar escritos todos en mayúsculas y si esta compuesto por varias palabras
+        separado
+        por guión bajo. Aunque esto es una convención no una obligación. También puedes contentener atributos o
+        propiedades normales
+        de cualquier tipo, constructores y metodos.
+    </p>
+    <p>Puedes inicializar un enum de la siguiente manera:</p>
+    <code>
+        //DiaDeLaSemana es un Enum
+        DíaDeLaSemana hoy = DíaDeLaSemana.LUNES;
+    </code>
+    <h2>Utilidad</h2>
+    <p>
+        Los enum son útiles cuando deseas garantizar que una variable solo puede tomar uno de los valores predefinidos
+        y cuando quieres que el código sea más legible al darle nombres descriptivos a los valores en lugar de usar
+        números o cadenas.
+    </p>
+    <p>Por ejemplo, en un switch:</p>
+    <code>
+        switch (hoy) {
+            case LUNES:
+                // Hacer algo para el lunes
+                break;
+            case MARTES:
+                // Hacer algo para el martes
+                break;
+            // ...
+        }
+    </code>
+    <h2>Otros usos:</h2>
+    <p>Puedes asignar valores personalizados a los elementos de un enum en Java. Esto se conoce
+        como asignar valores o propiedades a cada constante del enum. Por ejemplo:</p>
+    <code>
+        enum DíaDeLaSemana {
+            LUNES("Lunes"),
+            MARTES("Martes"),
+            MIÉRCOLES("Miércoles"),
+            JUEVES("Jueves"),
+            VIERNES("Viernes"),
+            SÁBADO("Sábado"),
+            DOMINGO("Domingo");
+        
+            private String nombre;
+        
+            DíaDeLaSemana(String nombre) {
+                this.nombre = nombre;
+            }
+            public String getNombre() {
+                return nombre;
+            }
+        }        
+    </code>
+    <p>En este ejemplo, cada constante enum tiene una propiedad nombre que se inicializa con un valor específico.
+        También se ha definido un constructor que acepta este valor y un método getNombre para acceder a él.</p>
+    <p>De esta manera, puedes acceder al valor personalizado de cada constante de la siguiente manera:</p>
+    <code>
+        DíaDeLaSemana hoy = DíaDeLaSemana.LUNES;
+        System.out.println(hoy.getNombre()); // Esto imprimirá "Lunes"
+    </code>
+    <p>
+        Esto es útil cuando necesitas asociar información adicional con cada constante enum. Puedes personalizar tus
+        enum de esta manera para que contengan más que solo un nombre simbólico y permitan un mejor manejo de datos
+        relacionados con cada elemento del enum.
+    </p>
+    <h2>Argumentos por valor y no por referencia</h2>
+    <p>
+        En Java, cuando pasas un enum como parámetro a un método, se pasa por valor, pero debes entender que en realidad
+        estás pasando una copia de la referencia al objeto enum. Esto significa que la copia de la referencia apuntará
+        al mismo objeto enum en la memoria. Por lo tanto, cualquier cambio que realices en el objeto enum a través de
+        esa referencia se reflejará en el objeto original fuera del método.
+
+    </p>
+    <p>
+        Aquí hay un ejemplo para ilustrar esto:
+
+    </p>
+    <code>
+        enum Color {
+            ROJO, VERDE, AZUL
+        }
+        
+        public void cambiarColor(Color color) {
+            color = Color.VERDE; // Cambiamos la copia de la referencia
+        }
+        
+        public static void main(String[] args) {
+            Color miColor = Color.ROJO;
+            System.out.println(miColor); // Imprimirá "ROJO"
+            
+            cambiarColor(miColor);
+            
+            System.out.println(miColor); // Aún imprimirá "ROJO" ya que la copia de la referencia cambió, no el objeto original
+        }        
+    </code>
+    <p>
+        En este ejemplo, aunque cambiamos el valor de color dentro del método cambiarColor, no afectará la variable
+        original miColor.
+    </p>
+    <p>
+        Sin embargo, si modificas los atributos de un objeto enum dentro del método, esos cambios se reflejarán en el
+        objeto original, ya que sigues operando en el mismo objeto al que apuntan ambas referencias.
+    </p>
+    <p>
+        Funciona de manera similar a un primitivo en el sentido de que se pasa por valor, lo que significa que se pasa
+        una copia de la referencia al objeto enum, y los cambios en la copia de la referencia no afectan la variable
+        original fuera del método. Esto es análogo al comportamiento de los tipos de datos primitivos en Java, como int
+        o char, que también se pasan por valor.
+
+    </p>
+    <p>
+        Entonces, en términos de paso de parámetros, puedes pensar en un enum como un tipo de dato que se comporta como
+        un primitivo en el sentido de que se pasa por valor, aunque en realidad se está pasando una referencia a un
+        objeto enum. Esto es importante para comprender cómo se manejan los objetos enum al pasarlos como argumentos a
+        métodos o al asignarlos a otras variables.
+    </p>
+    <h2>Ejemplo:</h2>
+    <code>
+        public enum Automoviles {
+            SEDAN("Sedan", "Este es el tipo de automóvil más común. Tiene cuatro puertas y capacidad para cinco pasajeros. 
+                Se caracteriza por su diseño elegante y práctico."),
+            COUPE("Coupé", " Los coupés son automóviles más pequeños y deportivos, generalmente con dos puertas y un techo
+                 más bajo que los sedanes. Suelen ser diseñados para dos o cuatro pasajeros."),
+            SUV("Suv", "Vehículo Utilitario Deportivo: Los SUV son vehículos más grandes que ofrecen espacio adicional y 
+                a menudo tracción en las cuatro ruedas. Son populares por su versatilidad y capacidad todoterreno."),
+            FURGONETA("Furgoneta", " Estos vehículos están diseñados para transportar a varias personas y ofrecen un espacio
+             amplio en el interior. Son ideales para familias y viajes grupales"),
+            PICKUP("Pickup", "Las camionetas pick-up tienen una cama de carga en la parte trasera y se utilizan comúnmente 
+            para el transporte de carga o para actividades al aire libre."),
+            CONVERTIBLE("Convertible", "Los automóviles convertibles tienen techos que se pueden quitar o plegar, lo que 
+            permite viajar con la parte superior abierta para una experiencia al aire libre."),
+            DEPORTIVO("Deportivo", "Los deportivos son automóviles diseñados para un alto rendimiento y velocidad. Suelen 
+            tener un diseño aerodinámico y motores potentes."),
+            HATCHBACK("Hatchback", " Estos automóviles tienen un diseño compacto y una puerta trasera que se abre hacia 
+            arriba para acceder al maletero. Son populares por su eficiencia y versatilidad."),
+            CROSSOVER("CrossOver", "Los crossovers son una combinación entre un SUV y un automóvil, ofreciendo algunas de 
+            las características de ambos, como la altura de conducción de un SUV con el tamaño de un automóvil."),
+            ELECTRICO("Eléctrico", "Los automóviles eléctricos utilizan energía eléctrica en lugar de combustibles fósiles.
+             Son una opción más ecológica y eficiente en términos de combustible."),
+            HIBRIDO("Híbrido", "Los automóviles híbridos combinan un motor de gasolina con un motor eléctrico para mejorar
+             la eficiencia de combustible."),
+            AUTONOMO("Autónomo", "Aunque aún en desarrollo, los automóviles autónomos son capaces de conducir por sí mismos
+             sin intervención humana.");
+        
+            private String nombre;
+            private String descripcion;
+        
+            Automoviles(String nombre, String descripcion) {
+                this.nombre = nombre;
+                this.descripcion = descripcion;
+            }
+        
+            public String getNombre() {
+                return nombre;
+            }
+        
+            public String getDescripcion() {
+                return descripcion;
+            }
+        
+            @Override
+            public String toString() {
+                return
+                        nombre +
+                        ": descripcion='" + descripcion ;
+            }
+        }
+    </code>
+    <p>Y en el método main:</p>
+    <code>
+        public class mainEnum {
+            public static void main(String[] args) {
+                Automoviles[] tiposAutomoviles = Automoviles.values();
+                for (Automoviles tipo: tiposAutomoviles
+                     ) {
+                    System.out.println(tipo.toString());
+                }
+            }
+        }
+    </code>
+    <h2>Interfaces como Enum</h2>
+    <p>Antiguamente cuando no existían los enum las interfaces podía funcionar como un enum pues sus atributos funcionan como 
+        constante.(Ampliar con Piensa en Java)
+    </p>
+    <h2>Metodos</h2>
+    <p>ordinal()</p>
+    <p>name()</p>
+</body>
+
+</html>

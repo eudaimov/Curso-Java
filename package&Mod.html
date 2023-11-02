@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Package y Modificadores de Acceso</h1>
+    <h2>Para que se usan los Package</h2>
+    <p>En Java, los "paquetes" (packages en inglés) se utilizan principalmente para organizar y estructurar el código
+        fuente en un proyecto. Los paquetes son directorios en los que se almacenan las clases relacionadas y otros
+        recursos, y se utilizan por varias razones importantes:</p>
+
+    <p>
+        Organización: Los paquetes permiten organizar las clases en una estructura jerárquica. Esto facilita la gestión
+        de
+        proyectos más grandes, ya que puedes agrupar clases relacionadas en paquetes y navegar por la estructura de
+        directorios de manera más ordenada.
+    </p>
+    <p>
+        Evitar Conflictos de Nombres: Los paquetes ayudan a prevenir conflictos de nombres entre clases. Si tienes
+        múltiples
+        clases con el mismo nombre en diferentes paquetes, no habrá conflictos, ya que el nombre completo de una clase
+        incluye el nombre del paquete.
+    </p>
+    <p>
+        Acceso Controlado: Los paquetes proporcionan niveles de acceso controlado. Las clases en un paquete pueden tener
+        acceso a clases y miembros (atributos y métodos) marcados como "package-private" (sin modificador de acceso), lo
+        que
+        significa que solo las clases del mismo paquete pueden acceder a ellos.
+
+    </p>
+    <p>
+        Reutilización de Código: Los paquetes también fomentan la reutilización de código al organizar clases
+        relacionadas
+        en bibliotecas o módulos que pueden ser utilizados en múltiples proyectos.
+
+    </p>
+    <p>
+
+        Distribución de Bibliotecas: Cuando creas bibliotecas o componentes reutilizables en Java, a menudo los
+        empaquetas en paquetes para que puedan ser distribuidos y utilizados por otros desarrolladores.
+    </p>
+    <p>
+        Para declarar que una clase pertenece a un paquete específico en Java, se utiliza la declaración package al
+        principio del archivo de código fuente, antes de la declaración de la clase. Por ejemplo:
+    </p>
+    <code>
+        package com.ejemplo.miproyecto.mipaquete;
+        
+        public class MiClase {
+        // Código de la clase
+        }
+    </code>
+    <p>
+        El código anterior declara que la clase MiClase pertenece al paquete com.ejemplo.miproyecto.mipaquete. Esto
+        ayuda a organizar las clases en una jerarquía y a evitar conflictos de nombres con otras clases.
+    </p>
+    <h3>Convención de nombres:</h3>
+    <div>
+        <p>El estándar de nombrado de paquetes en Java no está estrictamente definido por el lenguaje en sí, pero
+            existen convenciones ampliamente aceptadas y recomendadas por la comunidad de desarrollo de Java. Estas
+            convenciones ayudan a que el código sea más legible y a que los desarrolladores puedan ubicar clases y
+            paquetes de manera más fácil. Algunas de las convenciones comunes para dar nombre a los paquetes en Java
+            incluyen:</p>
+        <ul>
+            <li><strong>Convenio de Nombres en Minúsculas</strong>: Los nombres de paquetes suelen escribirse en
+                minúsculas. Por ejemplo, "com.ejemplo.miproyecto.mipaquete".</li>
+            <li><strong>Jerarquía de Nombres Reversa de Dominio</strong>: A menudo, se comienza el nombre del paquete
+                con el dominio inverso del sitio web de la organización o con el nombre de la empresa. Esto ayuda a
+                garantizar que los nombres de paquetes sean únicos y evita colisiones. Por ejemplo,
+                "com.ejemplo.miproyecto".</li>
+            <li><strong>Nombres Descriptivos</strong>: Los nombres de los paquetes deben ser descriptivos y reflejar el
+                propósito o la funcionalidad de las clases contenidas en ellos. Por ejemplo,
+                "com.ejemplo.miproyecto.mipaquete.util" para paquetes de utilidades.</li>
+            <li><strong>Evitar Abreviaciones Confusas</strong>: Evita abreviaciones o acrónimos oscuros que puedan ser
+                confusos. Es preferible un nombre largo pero descriptivo a un nombre corto e incomprensible.</li>
+            <li><strong>No Usar Palabras Reservadas de Java</strong>: No uses palabras reservadas del lenguaje Java,
+                como "java" o "javax", como parte de un nombre de paquete, ya que pueden dar lugar a conflictos y
+                problemas.</li>
+            <li><strong>Utilizar Convenciones de Dominio</strong>: Si tu organización o proyecto tiene convenciones
+                específicas de nombres de paquetes, es importante seguirlas para mantener la consistencia en todo el
+                código.</li>
+        </ul>
+        <p>Es importante recordar que estas son convenciones y no reglas estrictas del lenguaje Java. Sin embargo,
+            seguir estas convenciones ayuda a que el código sea más fácil de entender y mantener, y fomenta una mayor
+            consistencia en el desarrollo de software en Java.</p>
+    </div>
+    <h2>Import y modificadores de acceso.</h2>
+    <p>Lo primero que convien define el un programa y en la creación de clases, interfaces y enum es el paquete dónde se
+        encuentra:
+    </p>
+    <code>package com.ejemplo.miproyecto.mipaquete;</code>
+    <p>Para utilizar clases que se encuentran dentro de otro package  necesitamos importar dichas clases y
+        que sus modificadores de acceso lo permitan.
+    </p>
+    <p>Las importanciones se realizan así:</p>
+    <code>
+        import es.felix.mypaquete.MyClase;
+    </code>
+    <p>Si queremos importar todas las clases que se encuentren dentro de un package se utiliza el elemento comodín.</p>
+    <code>
+        import es.felix.mypaquete.*;
+    </code>
+    <p>Si se importar dos clases con el mismo nombre en un mismo archivo sólo una de ellas podremos utilizarla con su nombre,
+        el resto tenemos que utilizar el nombre completo
+    </p>
+    <code>
+        import es.felix.mypaqueteprimero.ClaseEspejo;
+        import es.felix.mypaquetesegundo.ClaseEspejo;
+        public class principal {
+            main(){
+                //Equivale a la clase del primer paquete
+                ClaseEspejo myclass1 = new ClaseEspejo();
+                //Equivale a la clase del segundo paquete
+                ClaseEspejo myclass2 = new es.felix.mypaquetesegundo.ClaseEspejo()
+            }
+        }
+    </code>
+    <p>Si dos clases se encuentran en el mismo paquete no se necesita importar nada.</p>
+    <h3>Modificadores de acceso</h3>
+    <ul>
+        <li>default: Sólo se puede acceder desde el mismo package</li>
+        <li>protected: Se puede acceder desde el mismo package o cualquier otra clase que extienda de esta.</li>
+        <li>private: Sólo se puede acceder desde la misma clase</li>
+        <li>public: Se puede acceder desde cualquier clase.</li>
+    </ul>
+    <h3>Importación de propiedades estáticos y enum</h3>
+
+    <h2>Modificadores de acceso static y final</h2>
+</body>
+
+</html>

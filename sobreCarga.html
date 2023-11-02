@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobrecarga</title>
+</head>
+
+<body>
+
+    <h1>Sobrecarga de Métodos en Java y sobrecarga de Constructores</h1>
+    <p>La sobrecarga de métodos es un concepto en la programación orientada a objetos que permite a una clase definir
+        varios métodos o constructores con el mismo nombre, pero con diferentes listas de parámetros. Cada versión de un método o de un constructor
+        sobrecargado realiza una tarea similar o relacionada, pero acepta diferentes tipos de argumentos o una cantidad
+        diferente de argumentos.</p>
+
+    <h2>Ejemplo de Sobrecarga de Métodos</h2>
+    <p>Un ejemplo común de sobrecarga de métodos es el uso de varios métodos llamados "sumar" que aceptan diferentes
+        tipos de argumentos:</p>
+    <code>
+            public class Calculadora {
+                public int sumar(int a, int b) {
+                    return a + b;
+                }
+
+                public double sumar(double a, double b) {
+                    return a + b;
+                }
+
+                public int sumar(int a, int b, int c) {
+                    return a + b + c;
+                }
+            }
+    </code>
+    <p>En este ejemplo, la clase Calculadora define tres métodos llamados "sumar". El primer método toma
+        dos enteros como argumentos, el segundo método toma dos números de punto flotante, y el tercer método toma tres
+        enteros. Cada versión del método sumar   realiza una operación de suma, pero acepta diferentes tipos
+        de argumentos.</p>
+
+    <h2>Resolución en Tiempo de Compilación</h2>
+    <p>La sobrecarga de métodos se resuelve en tiempo de compilación, lo que significa que el compilador determina qué
+        versión del método se debe llamar según la cantidad y el tipo de argumentos proporcionados en una llamada al
+        método. Esto permite a los desarrolladores crear interfaces más flexibles y convenientes para trabajar con
+        diferentes tipos de datos.</p>
+
+    <h2>Importancia de la Sobrecarga de Métodos</h2>
+    <p>La sobrecarga de métodos es útil para proporcionar funcionalidad similar en una clase mientras se adapta a
+        diferentes tipos de datos o situaciones. Esto mejora la legibilidad del código y evita la necesidad de nombrar
+        métodos de manera diferente para realizar tareas similares. La sobrecarga de métodos se utiliza comúnmente en
+        bibliotecas y clases de utilidades para ofrecer una variedad de opciones de uso a los programadores.</p>
+
+    <p>En resumen, la sobrecarga de métodos permite definir varios métodos con el mismo nombre en una clase, pero con
+        diferentes parámetros. Esto brinda flexibilidad y comodidad al programar, al tiempo que facilita la creación de
+        interfaces más intuitivas y versátiles.</p>
+
+
+</body>
+
+</html>

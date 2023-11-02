@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polimorfismo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Polimorfismo.</h1>
+    <p>El polimorfismo es uno de los conceptos clave de la programación orientada a objetos (POO) y se refiere a la
+        capacidad de los objetos de clases diferentes de responder a mensajes de manera uniforme. En Java, el
+        polimorfismo se logra principalmente a través de la herencia y las interfaces. Consiste en lo siguiente:</p>
+
+    <ol>
+        <li><strong>Herencia y Subtipos</strong>: El polimorfismo se basa en la relación "es un" o "es un subtipo de".
+            Esto significa que un objeto de una clase derivada (subclase) puede tratarse como un objeto de la clase base
+            (superclase). Por ejemplo, si tienes una clase Vehiculo y una clase Coche que
+            hereda de Vehiculo, un objeto Coche es también un Vehiculo</code>.</li>
+        <li><strong>Métodos Polimórficos</strong>: El polimorfismo permite que los objetos respondan a métodos de la
+            misma manera, independientemente de su tipo concreto. Esto significa que puedes llamar al mismo método en
+            diferentes objetos y obtener resultados diferentes según la implementación específica en cada subclase.</li>
+        <li><strong>Sobrescritura de Métodos</strong>: Para lograr el polimorfismo, es común que las subclases
+            sobrescriban (redefinan) los métodos heredados de las superclases. Esto permite que las subclases
+            proporcionen implementaciones específicas y personalizadas de esos métodos.</li>
+        <li><strong>Enlace Dinámico</strong>: En tiempo de ejecución, el sistema determina qué método se debe llamar
+            según el tipo concreto del objeto, no según el tipo de referencia. Esto se conoce como enlace dinámico, y es
+            fundamental para el polimorfismo. Permite que un objeto de una subclase pueda reemplazar a un objeto de la
+            superclase en un contexto polimórfico.</li>
+    </ol>
+
+    <p>Aquí hay un ejemplo en Java que ilustra el polimorfismo:</p>
+
+   <code>
+            class Vehiculo {
+                void acelerar() {
+                    System.out.println("El vehículo acelera.");
+                }
+            }
+            class Coche extends Vehiculo {
+                @Override
+                void acelerar() {
+                    System.out.println("El coche acelera rápidamente.");
+                }
+            }
+            public class Main {
+                public static void main(String[] args) {
+                    Vehiculo miVehiculo = new Coche();
+                    miVehiculo.acelerar(); // Llama al método acelerar del Coche
+                }
+            }
+    </code>
+
+    <p>En este ejemplo, miVehiculo es de tipo Vehiculo, pero en tiempo de ejecución, se
+        refiere a una instancia de Coche. Cuando se llama al método acelerar, se ejecuta la
+        implementación de Coche (sobrescrita), lo que demuestra el principio del polimorfismo. El tipo
+        concreto del objeto en tiempo de ejecución determina cuál método se ejecuta.</p>
+
+</body>
+
+</html>
