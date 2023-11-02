@@ -37,3 +37,6 @@ li{
 ul, ol{
     margin-bottom: 1.2rem;
 }
+nav{
+    margin-block: 1rem;
+}

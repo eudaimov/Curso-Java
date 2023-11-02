@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <a href="./index.html">Indice</a>
+    </nav>
+    <h1>Generics</h1>
+    <h2>¿Qué son?</h2>
+    <p> Los genéricos son una característica que te permite escribir clases y métodos que operan en tipos de datos de
+        manera genérica, es decir, puedes crear componentes reutilizables que funcionen con diferentes tipos de datos
+        sin tener que escribir código duplicado.</p>
+    <p>La principal ventaja de los genéricos es la seguridad de tipo. Te permiten atrapar errores de tiempo de
+        compilación si intentas usar un tipo incorrecto en lugar del tipo esperado, lo que hace que tu código sea más
+        robusto.</p>
+
+    <p>Un ejemplo común es el uso de genéricos en listas, como ArrayList. En lugar de crear una lista específica para un
+        tipo de dato (por ejemplo, una lista de enteros o una lista de cadenas), puedes utilizar una lista genérica que
+        puede contener cualquier tipo de dato.</p>
+
+    <p>Aquí hay un ejemplo sencillo de cómo se definen y utilizan genéricos en Java:</p>
+    <code>
+        class MiClaseGenerica<T> {
+            private T miDato;
+        
+            public MiClaseGenerica(T dato) {
+                this.miDato = dato;
+            }
+        
+            public T getDato() {
+                return miDato;
+            }
+        }
+        
+        public class EjemploGenericos {
+            public static void main(String[] args) {
+                MiClaseGenerica<Integer> enteroGenerico = new MiClaseGeneric<>(42);
+                MiClaseGenerica<String> cadenaGenerica = new MiClaseGeneric<>("Hola, mundo");
+        
+                Integer entero = enteroGenerico.getDato();
+                String cadena = cadenaGenerica.getDato();
+        
+                System.out.println("Valor entero: " + entero);
+                System.out.println("Valor cadena: " + cadena);
+            }
+        }
+    </code>
+    <p>
+        En este ejemplo, T es un parámetro genérico que representa el tipo de dato que se utilizará en la instancia de
+        MiClaseGenerica. Puedes usar genéricos en clases, interfaces, métodos, y también en colecciones como Listas,
+        Mapas, y más.
+    </p>
+
+</body>
+
+</html>
