@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav><a href="index.html"></a></nav>
+    <h1>Herencia</h1>
+    La herencia en Java se refiere a la capacidad de una clase (llamada subclase o clase derivada) de heredar atributos
+    y métodos de otra clase (llamada superclase o clase base). Esto permite la reutilización de código y la creación de
+    una jerarquía de clases en la que las subclases heredan comportamientos y características de las superclases. Aquí
+    hay algunos conceptos clave relacionados con la herencia en Java:
+
+    Clases Base, clases padre o (Superclases): Es la clase original de la que otras clases heredan. Contiene atributos y métodos comunes
+    que se comparten con sus subclases. Puede considerarse como la clase "padre" en la jerarquía.
+
+    Clase Derivada, Subclase o clase hija: Es la clase que hereda atributos y métodos de la clase base. Puede agregar nuevos
+    atributos y métodos o modificar los heredados. Se considera la clase "hija" en la jerarquía.
+
+    Extends: En Java, para establecer una relación de herencia, se utiliza la palabra clave extends. Una subclase se
+    declara usando extends seguido del nombre de la superclase. Por ejemplo: class Subclase extends Superclase.
+
+    Métodos y Atributos Heredados: Las subclases heredan todos los métodos y atributos (campos) públicos o protegidos de
+    la superclase. Esto significa que pueden acceder y utilizar estos métodos y atributos directamente.
+
+    Métodos Override: Una subclase puede proporcionar su propia implementación de un método heredado de la superclase.
+    Esto se logra anotando el método con la etiqueta @Override y proporcionando una nueva implementación.
+
+    Herencia en Cadena: Una subclase puede a su vez convertirse en una superclase para otra clase, creando una cadena de
+    herencia. Esto permite la construcción de jerarquías complejas de clases.
+
+    Acceso a Constructores: Las subclases pueden llamar al constructor de la superclase utilizando la palabra clave
+    super para inicializar las propiedades heredadas de la superclase.
+
+    La herencia en Java es una poderosa herramienta para la reutilización de código y la creación de una estructura
+    organizada de clases en una aplicación. Sin embargo, es importante usarla con sensatez y asegurarse de que la
+    relación de herencia tiene sentido en el contexto de tu aplicación, ya que una jerarquía de clases excesivamente
+    compleja puede volverse difícil de mantener.
+
+    <h2>Construcción: extend</h2>
+    <section>
+        <p>Para construir una jerarquica de dependica entre una clase hija y una clase padre se utilza la palabra clave extends 
+            después del nombre de la clase. Por ejemplo:
+        </p>
+        <code>
+            
+            public class Padre{};
+            public class Hijo extends Padre{}
+        </code>
+        <p>En UML se representa con un flecha continua que va desde la clase hija a la clase padre, con una flecha en blanco.</p>
+        <p>Se puede realizar mediante dos métodos: generación y especialización.</p>
+        <p>Hay que seguir el principio Open - Close. Abierto a la extension y cerrado a la modificación.</p>
+        <p>Una clase hija puede ejecutar constructor o métodos de la clase padre a traves de la palabra reservada super.</p>
+        <p>Si queremos capar o cortar los ovarios o los testitulos a una clase esto ser haría mediante la palabra final. O bien en 
+            la misma clase o bien para algún método, constructor o atributo en particular.
+        </p>
+        <p>No existe la herencia múltiple en Java solo puede existir un padre.</p>
+        <p>Cuando una clase hereda de otra también puede ser del tipo padre. Pero habría que hacer un cast</p>
+        <p>Por ejemplo:</p>
+        <code>
+            Hijo hijo = (Hijo) new Padre();
+        </code>
+        <p>Un padre puede instanciarse con su Hijo aunque luego hará falta una conversion. Aunque lo aconsejable es que sea del tipo 
+            del cual se esta creando.
+        </p>
+        <code>
+            Padre padreConvertido = new Hijo();
+            padreConvertido.setNombre("Juan");
+            System.out.println(((Hijo) padreConvertido).tituloget());
+        </code>
+        <p>Un Hijo también hereda todos los atributos y métodos que herede su padre.</p>
+        <p>Para saber el ancestro se utiliza el método getSuperclass()</p>
+        <p>Una clase hija deberá impementar el constructor de la clase padre si este no posee un constructor por defecto, es decir, un
+            constructor sin parametros. Esto se hará en el constructor hijo con la palabra reservada super().
+        </p>
+        <code>
+            Constructor(){
+                super(paramClasePadre);
+                //etc code
+            }
+        </code>
+    </section>
+</body>
+
+</html>

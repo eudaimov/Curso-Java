@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -73,7 +74,7 @@
         </code>
         <p>Por:</p>
         <code>
-            List<String> list = new ArrayList<String>();
+            List&lt;String> list = new ArrayList<String>();
             list.add("hello");
             String s = list.get(0); 
         </code>
@@ -98,7 +99,7 @@
         código puedes pasar por error un String. Esto dará como resultado en un error de tiempo de ejecución.</p>
     <p>En cambio:</p>
     <code>
-        public class Box<T> {
+        public class Box&lt;T&gt; {
             private T t;
             public void set(T t) {
                  this.t = t;
@@ -117,34 +118,64 @@
             aparece antes del tipo de retorno del método. Para métodos genéricos estáticos, la sección de parámetro de
             tipo debe aparecer antes del tipo de retorno del método.</p>
         <code>
-            public class Util {
-                public static <K, V> boolean compare(Pair<K, V> p1, Pair<K, V> p2) {
-                    return p1.getKey().equals(p2.getKey()) &&
-                           p1.getValue().equals(p2.getValue());
+            public class UtilGenerics {
+                public static &lt;T&gt; String convertirMayusculas(T t){
+                    return t.toString().toUpperCase();
                 }
             }
-            
-            public class Pair<K, V> {
-            
-                private K key;
-                private V value;
-            
-                public Pair(K key, V value) {
-                    this.key = key;
-                    this.value = value;
-                }
-            
-                public void setKey(K key) { this.key = key; }
-                public void setValue(V value) { this.value = value; }
-                public K getKey()   { return key; }
-                public V getValue() { return value; }
-            }
-            Pair<Integer, String> p1 = new Pair<>(1, "apple");
-            Pair<Integer, String> p2 = new Pair<>(2, "pear");
-            boolean same = Util.compare(p1, p2);
         </code>
-
+        <code>
+            public class MainGeneric {
+                public static void main(String[] args) {
+                    String primeraPersona = "Juan";
+                    Integer segundaPersona = 25;
+                    System.out.println(UtilGeneric.convertirMayusculas(primeraPersona));
+                    System.out.println(UtilGeneric.convertirMayusculas(segundaPersona));
+                }
+            }
+        </code>
+        <p>Si quiero limitar el método a objetos de tipo String tendría que modificar el código al siguiente:</p>
+        <code>
+                public class UtilGenerics {
+                    public static &lt;T extends String&gt; String convertirMayusculas(T t){
+                        return t.toUpperCase();
+                    }
+                }
+        </code>
+        <p><strong>Importante:</strong> Si así lo hicera ahora el código del método main nos estaría dando un error y el
+            segundo sout marcaría un
+            error en tiempo de compilación pues no puede utilizar el método con parametros de tipo Integer y tendría que
+            colocar
+            un parametro unicamente de tipo String.
+        </p>
+        <p>Y si quiero que todas las subclases de tipo generico en lugar de utilizar una letra mayúscula como T, tendría
+            que utilizar una
+            interrogación.
+        </p>
     </section>
+    <h2>Clases genéricas</h2>
+    <h3>Borrado de tipos genericos</h3>
+    <section>
+        <p>Si etiquetamos una clase con un genérico, el compilador de Java elimina todos los parámetros de tipo
+            (genéricos) y los reemplaza por su primer límite (bound) si el parámetro de tipo está limitado, o por
+            "Object" si el parámetro de tipo no está limitado.</p>
+        <code>
+            public class &lt;T extends Comparable&gt;{
+
+            }
+        </code>
+    <h2>Uso de genericos en argumentos variables</h2>
+    <code>
+        public class ArrayBuilder {
+
+            public static &lt;T&gt; void addToList (List&lt;T> listArg, T... elements) {
+              for (T x : elements) {
+                listArg.add(x);
+              }
+            }
+    </code>
+    </section>
+
 
 </body>
 

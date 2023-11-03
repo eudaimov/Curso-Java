@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instanceOf</title>
+    <link rel="stylesheet" href="./instanceof.html">
+</head>
+
+<body>
+    <h1>instanceOf</h1>
+    <h2>¿Qué es?</h2>
+    <section>
+        <p>Es un operador binario que usamos para probar si un objeto es de un tipo determinado. El resultado de la
+            operación es verdadero o falso . También se le conoce como operador de comparación de tipos porque compara
+            la
+            instancia con el tipo.</p>
+
+        <p>Antes de lanzar un objeto desconocido, siempre se debe utilizar la instancia de verificación. Hacer esto
+            ayuda a
+            evitar una ClassCastException en tiempo de ejecución.</p>
+
+        <p>La sintaxis básica del operador de instancia es:</p>
+        <code>
+            (intancia) instanceOf (type/class)
+        </code>
+    </section>
+    <h2>¿Cómo funciona la instancia del operador?</h2>
+    <section>
+        <p>Este operador sólo dará falso en el caso de que la instancia sea nula, pero si la instancia y el tipo no son
+            de la misma clase o no implementa la interfaz o no extiende de esa clase el resultado será un error en
+            tiempo de   ejecución:
+        </p>
+        <p>java: incompatible types: XXX cannot be converted to XXX</p>
+        <p>Hay otro caso en el que también se puede utilizar que es aquellos que estamos utilizando una instancia de una clase padre
+            para compararla con una de la clase hija. En este caso dara falso.
+        </p>
+        <p>En Java, cada clase hereda implícitamente de la clase Objeto . Por lo tanto, el uso del operador instancia de
+        con el tipo Objeto siempre se evaluará como verdadero :</p>
+        <p>No podemos usar este operador con clases genericas a no ser el parametro comidin ?</p>
+    </section>
+    <h2>Alternativas</h2>
+    <section>
+        <p>Una alternativa via es comparar dos instancias para ver que son del mismo tipo con instancia.getClass().isInstance(segundaInstancia);</p>
+    </section>
+
+</body>
+
+</html>
