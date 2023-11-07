@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exceciones</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>Excepciones</h1>
+        <h2>Introducción:</h2>
+        <section>
+            <h3>¿Qué es una excepción?</h3>
+                <article>
+                    <p>Una excepción es un problema o evento que ocurre durante la ejecución del programa que interrumpe
+                        el flujo normal
+                    </p>
+                    <p>Cuando ocurre un error dentro de un método, el método crea un objeto y lo entrega al sistema de ejecución. El
+                        objeto, llamado objeto de excepción, contiene información sobre el error, incluido su tipo y el estado del
+                        programa cuando ocurrió el error. Crear un objeto de excepción y entregarlo al sistema de ejecución se
+                        denomina
+                        lanzar una excepción.</p>
+                    <p>Después de que un método genera una excepción, el sistema de ejecución intenta encontrar algo para manejarla.
+                        El conjunto de posibles "algos" para manejar la excepción es la lista ordenada de métodos que se llamaron
+                        para llegar al método donde ocurrió el error. La lista de métodos se conoce como pila de llamadas.</p>
+
+                    <p>Las principales características del tratamiento de excepciones en Java es:</p>
+                    <ul>
+                        <li>Separa el código que gestiona los errores del código principal.</li>
+                        <li>Nos permite manejar el error y continuar con la ejecución del programa</li>
+                        <li>Agrupar y diferenciar entre diferentes tipos de errores</li>
+                        <li>Propagar errores hacia arriba en la pila de llamadas.</li>
+                    </ul>
+                </article>
+
+            <h3>¿Capturar o especificar?</h3>
+                <article>  
+                    <p>El código válido del lenguaje de programación Java debe cumplir con el requisito de captura o especificación .
+                        Esto significa que el código que podría generar ciertas excepciones debe estar encerrado en cualquiera de los
+                        siguientes:
+                    </p>
+                    <ul>
+                        <li>Una try declaración que detecta la excepción. Debe try proporcionar un controlador para la excepción, como
+                            se describe en Captura y manejo de excepciones. Un método que especifica que puede generar la excepción.
+                            El método debe proporcionar una throwscláusula que enumere la excepción, como se describe en
+                            Especificación de las excepciones generadas por un método.</li>
+                        <li>Un método que especifica que puede generar la excepción. El método debe proporcionar una cláusula throws que
+                            enumere la excepción, como se describe en Especificación de las excepciones generadas por un método.</li>
+                    </ul>
+                </article>
+            <h3>Tipos de Errores</h3>
+            <article>
+                <p>Existen tres tipos de errores:</p>
+                <ol>
+                    <li>Marcada o comprobada</li>
+                    <li>Errores ajenos a la aplicación.</li>
+                    <li>Errores en tiempo de ejecución (RunTimeException) o no comprobadas</li>
+                </ol> 
+                <p>Dentro de las inesperadas se encuentran las que son ajenas a java y otras que se encuentra dentro de Java que
+                    son conocidas como RunTimeException o excepciones ocurridas en Tiempo de Ejecución.También se le conoce como
+                    excepciones no
+                    comprobadas.
+                </p>
+            </article>
+        </section>
+        <h2>Captura y manejo de Exceciones: (Sintasis)</h2>
+        <section>
+            <h3>Captura y manejo de excepciones</h3>
+            <h3>El bloque de prueba</h3>
+            <h3>Los bloques de captura</h3>
+            <h3>Captura múltiple</h3>
+            <h3>El bloque final</h3>
+            <h3>La prueba con recursos</h3>
+            <h3>Excepciones suprimidas</h3>
+            <h3>Clases que implementan la interfaz AutoCloseable o Closeable</h3>
+            <h3>Poniendolo todo junto</h3>
+        </section>
+        <h2>Lanzar excepciones</h2>
+        <h2>Excepciones no controladas</h2>
+        <h2>
+            Biografía:
+        </h2>
+        <article>
+            <a href="https://dev.java/learn/exceptions/">Dev Java</a>
+        </article>
+            
+
+</body>
+
+</html>

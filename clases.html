@@ -12,8 +12,8 @@
     </nav>
     <h1>Clases</h1>
     <h2>Definición:</h2>
-    <p>Las clases sonlos modelos necesarios para la creación de objetos. Por lo que en resumidas cuentas modela el estado y comportamiento
-        de objetos reales
+    <p>Las clases son los modelos o plantillas necesarios para la creación de objetos. Por lo que en resumidas cuentas modela el estado y comportamiento
+        de objetos reales. Es la esencia de la programción orientada a objetos en Java.
     </p>
     <p>Una clase tiene principalmente tres componentes:</p>
     <ul>
@@ -23,20 +23,29 @@
     </ul>
     <h2>Declaración</h2>
     <section>
-        <p>Debe corresponder una sóla clase por archivo y debe tener el mismo nombre la clase que el archio.</p>
-        <p>La clase debe tener su primera letra en Mayúscula y el resto en singular. Corresponde al nombre de un objecto. Si
+        <p>Debe corresponder una sóla clase por archivo y debe tener el mismo nombre la clase que el archivo.</p>
+        <p>La clase debe tener su primera letra en Mayúscula y la palabra tiene que estar en singular(por convención). Corresponde al nombre de un objecto. Si
             el nombre se compone de dos palabras la segunda palabra debe aparecer junto a la primera sin espacios y con su primera letra
             en mayúsculas. Es lo que se conoce como CamelCase.        
         </p>
         <p>Se construye de la siguiente manera.</p>
         <ul>
-            <li>modificadores de acceso. Aunque suele ser siempre public</li>
-            <li>class palabra reservada.</li>
-            <li>NameClass: El nombre de la clase.</li>
-            <span>Optionales</span>
-            <li>extends NameClass: Las clases de las que extiende. Si son varias puedes separarlas con coma.</li>
-            <li>implements NameClass: Las interfaces que implementa. Si son varias puedes separarlas con coma.</li>
-            <li>{} Llave donde iran los principales componentes con los cuales se componen una clase (atributos, metodos y constructores).
+            <li>
+                <strong>Modificadores de acceso.</strong> Suele ser siempre public.
+            </li>
+            <li><strong>class</strong></li>
+            <li>
+                <strong>NombreClase</strong>. El nombre de la clase.
+            </li>
+            <span>Optionales:</span>
+            <li>
+                <strong>extends NombreClase</strong>. La clase de la que extiende. Solamente puede extender de una sóla clase.
+            </li>
+            <li>
+                <strong>implements NameClass</strong>. Las interfaces que implementa. Si son varias puedes separarlas con coma.
+            </li>
+            <li><strong>{ ... }</strong>. Llave donde se cololcan todos los componentes con los cuales se construye una
+                 clase (atributos, métodos y constructores).
                 </li>
         </ul>
         <p>Por ejemplo:</p>
@@ -68,14 +77,32 @@
     </section>
     <h2>Constructores</h2>
     <section>
-        <p>Tiene el mismo nombre que la clase puede tener modificadores de acceso pero no devuelve nada por lo que no hay que poner
-            ni void ni ningun tipo de Clase.
+        <p>Tiene el mismo nombre que la clase puede tener modificadores de acceso pero carecen de un tipo de devolución
+            explicito pues devuelven el propio la misma clase convertida en objeto, es decir, una instancia.
+            Por lo general, la función de los constructores es aasignar valores iniciales a las variables.
         </p>
-        <p>El modifador por defecto es public aunque se podría poner private si queremos evitar que se pueda instanciar y utilizar 
+        <p>El modificador por defecto es public aunque se podría poner private si queremos evitar que se pueda instanciar y utilizar 
             unicamente métodos estáticos.
         </p>
-        <p>Puede existir una sobrecarga de métodos que se diferenciaran unos de otros por los parametros de este</p>
-        <p>Puede que no pongamos ningún constructor en su defecto existe un constructor sin parametros.</p>
+        <p>Puede existir una sobrecarga de métodos que se diferenciaran unos de otros por los parametros de este.</p>
+        <p>Todas las clases tienen constructores los defina o no, ya que Java ofrece automáticamente constructores predeterminados
+            o también conocidos constructores por defecto que inicializa todas las varialbes en us valores predetermindos
+            0, null o false. 
+        <p>Veamos un ejemplo: </p>
+        <code>
+            public class MyClass{
+                String nombre;
+                //Constructor:
+                public MyClass(){
+                    this.nombre="Anónima";
+                }
+            }
+        </code>
+        <p>En este ultimo ejemplo el constructor asigna a la propiedad nombre el valor por defecto Anónima.</p>
+        <p>Una vez creado un constructor, el constructor por defecto desaparece y el atributo que anteriormente sería null por 
+            el constructor por defecto desaparece.
+        </p>
+        <h3>Constructores con parametros..</h3>
     </section>
 </body>
 </html>

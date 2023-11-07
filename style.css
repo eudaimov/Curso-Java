@@ -30,6 +30,9 @@ p{
     text-indent: 2rem;
     margin-bottom: 1.2rem;
 }
+ul, ol{
+    margin-left: 2rem;
+}
 li{
     text-align: justify;
     margin-bottom: 0.5rem;

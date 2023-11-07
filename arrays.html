@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Arreglos</h1>
+    <h2>Definición</h2>
+    <p>Es una colección de variables del mismo tipo a las que se hace referencia por medio de un nombre común.</p>
+    <p>La principal ventaja de un arreglos es que organiza los datos para facilitar su manipulación</p>
+    <h2>Creación de arreglos</h2>
+    <section>
+        <p>Tenemos que saber antes de crear la capacidad de elementos que puede contener el array. Esta capacidad o tamaño es 
+            inalterable y fija.
+        </p>
+        <code>
+            int [] arrayNumero = new int[5];
+            int arrayNumero[] = {1,2,3,4,5};
+        </code>
+        <p>Para introducir datos en una posición determinada de un array</p>
+        <code>
+            int  arrayNumero[] = new int[5];
+            arrayNumero[0]=1;
+            arrayNumero[1]=2;
+            arrayNumero[2]=3;
+            arrayNumero[3]=4;
+            arrayNumero[4]=5;
+        </code>
+        <p>La primera posición de cualquier array siempre comienza con 0</p>
+    </section>
+    <h2>Recorrer posiciones de un array</h2>
+    <section>
+        <p>Hay dos maneras a traves de un for y un foreach:</p>
+        <code>
+            for(int i = =0; i &lt; arrayNumero.lenght;i++){
+                System.out.println(arrayNumero[i]);
+            }
+         </code>
+         <p>foreach:</p>
+         <code>
+            for(int element: arrayNumero){
+                System.out.println(element)
+            }
+         </code>
+    </section>
+    <h2>¿Cómo copiar un array en otro?</h2>
+    <p>Para copiar un primer array dado en un segundo array, hay que poner el array primero que deseo copiar y desde la posición que deseo copiar, 
+        luego el array de destino y la posición en la que deseo empezar a ubicar el array de destino, y por último la cantidad de elementos
+        que deseo copiar.
+    </p>
+    <code>
+        int[] arrayPrimero = {10,20,40,101,25};
+        int[] arraySegundo = new int[5];
+        System.arraycopy(arrayPrimero, 0, arraySegundo, 0, arrayPrimero.lenght);
+    </code>
+    <h2>Matrices</h2>
+    <p>Es un Array de array, se dice que array bidimensional, que se compone de filas y columnas.</p>
+    <p>Recorrer matrices con for y foreach</p>
+    <p>Matrices con columnas variables.</p>
+    <p>bucar valores en una matriz</p>
+    <p>Matrices simetricas</p>
+    <p>Matriz transpuesta</p>
+</body>
+</html>

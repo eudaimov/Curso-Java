@@ -58,8 +58,11 @@
         relación de herencia tiene sentido en el contexto de tu aplicación, ya que una jerarquía de clases excesivamente
         compleja puede volverse difícil de mantener.
     </p>
+    <p>A diferencia con otros lenguajes como C++ no existe una herencia multiple, por lo que sólo se podrá heredar metodos y atributos
+        de una sola clase.
+    </p>
 
-    <h2>Construcción: extend</h2>
+    <h2>Construcción: extends y ejemplos:</h2>
     <section>
         <p>Para construir una jerarquica de dependencia entre una clase y otra se utilza la palabra clave extends
             después del nombre de la clase cuya dependencia depende de otra clase. Por ejemplo:
@@ -79,7 +82,7 @@
             O bien en
             la misma clase o bien para algún método, constructor o atributo en particular.
         </p>
-        <p>No existe la herencia múltiple en Java solo puede existir un padre.</p>
+    
         <p>Cuando una clase hereda de otra también puede ser del tipo padre. Pero habría que hacer un cast</p>
         <p>Por ejemplo:</p>
         <code>
