@@ -1,182 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Document</title>
+	<link href="style.css" rel="stylesheet">
 </head>
-
 <body>
-    <nav>
-        <a href="./index.html">Indice</a>
-    </nav>
-    <h1>Generics</h1>
-    <h2>¿Qué son?</h2>
-    <p> Los genéricos son una característica que te permite escribir clases y métodos que operan en tipos de datos de
-        manera genérica, es decir, puedes crear componentes reutilizables que funcionen con diferentes tipos de datos
-        sin tener que escribir código duplicado.</p>
-
-    <p>Un tipo genérico es una clase o interfaz genérica que está parametrizada sobre tipos</p>
-
-    <p>La principal ventaja de los genéricos es la seguridad de tipo. Te permiten atrapar errores de tiempo de
-        compilación si intentas usar un tipo incorrecto en lugar del tipo esperado, lo que hace que tu código sea más
-        robusto.</p>
-
-    <p>Un ejemplo común es el uso de genéricos en listas, como ArrayList. En lugar de crear una lista específica para un
-        tipo de dato (por ejemplo, una lista de enteros o una lista de cadenas), puedes utilizar una lista genérica que
-        puede contener cualquier tipo de dato.</p>
-
-    <p>Aquí hay un ejemplo sencillo de cómo se definen y utilizan genéricos en Java:</p>
-    <code>
-        class MiClaseGenerica<T> {
-            private T miDato;
-        
-            public MiClaseGenerica(T dato) {
-                this.miDato = dato;
-            }
-        
-            public T getDato() {
-                return miDato;
-            }
-        }
-        
-        public class EjemploGenericos {
-            public static void main(String[] args) {
-                MiClaseGenerica<Integer> enteroGenerico = new MiClaseGeneric<>(42);
-                MiClaseGenerica<String> cadenaGenerica = new MiClaseGeneric<>("Hola, mundo");
-        
-                Integer entero = enteroGenerico.getDato();
-                String cadena = cadenaGenerica.getDato();
-        
-                System.out.println("Valor entero: " + entero);
-                System.out.println("Valor cadena: " + cadena);
-            }
-        }
-    </code>
-    <p>
-        En este ejemplo, T es un parámetro genérico que representa el tipo de dato que se utilizará en la instancia de
-        MiClaseGenerica. Puedes usar genéricos en clases, interfaces, métodos, y también en colecciones como Listas,
-        Mapas, y más.
-    </p>
-    <h2>¿Por qué utilizar genericos?</h2>
-    <ul>
-        <li>Comprobaciones de tipos más estrictas en tiempo de compilación.Un compilador de Java aplica una verificación
-            de tipos estricta al código genérico y emite errores si el código viola la seguridad de tipos. Corregir
-            errores en tiempo de compilación es más fácil que corregir errores en tiempo de ejecución, que pueden ser
-            difíciles de encontrar.</li>
-        <li>Eliminación de conversiones y los errores en tiempo de ejecución que esto puede suponer</li>
-        <code>
-            List list = new ArrayList();
-            list.add("hello");
-            String s = (String) list.get(0);
-        </code>
-        <p>Por:</p>
-        <code>
-            List&lt;String> list = new ArrayList<String>();
-            list.add("hello");
-            String s = list.get(0); 
-        </code>
-        <li>Permitir a los programadores implementar algoritmos genéricos.
-            Al utilizar genéricos, los programadores pueden implementar algoritmos genéricos que funcionan en
-            colecciones de diferentes tipos, se pueden personalizar y son seguros y fáciles de leer.</li>
-
-    </ul>
-
-    <h2>Conversión de una clase normal en clase generica</h2>
-    <code>
-        public class Box {
-            private Object object;
-        
-            public void set(Object object) { this.object = object; }
-            public Object get() { return object; }
-        }
-    </code>
-    <p>Dado que sus métodos aceptan o devuelven un Object , eres libre de pasar lo que quieras, siempre que no sea uno
-        de los tipos primitivos. No hay forma de verificar, en tiempo de compilación, cómo se usa la clase. Una parte
-        del código puede colocar un Integer en el cuadro y esperar obtener Integers de él, mientras que otra parte del
-        código puedes pasar por error un String. Esto dará como resultado en un error de tiempo de ejecución.</p>
-    <p>En cambio:</p>
-    <code>
-        public class Box&lt;T&gt; {
-            private T t;
-            public void set(T t) {
-                 this.t = t;
-                 }
-            public T get() {
-                 return t;
-                 }
-        }
-    </code>
-    <h2>Métodos genéricos</h2>
-    <section>
-        <p>Los métodos genéricos son métodos que introducen sus propios parámetros de tipo. Esto es similar a declarar
-            un tipo genérico, pero el alcance del parámetro de tipo se limita al método donde se declara. Se permiten
-            métodos genéricos estáticos y no estáticos, así como constructores de clases genéricos.</p>
-        <p>La sintaxis de un método genérico incluye una lista de parámetros de tipo, entre corchetes angulares, que
-            aparece antes del tipo de retorno del método. Para métodos genéricos estáticos, la sección de parámetro de
-            tipo debe aparecer antes del tipo de retorno del método.</p>
-        <code>
-            public class UtilGenerics {
-                public static &lt;T&gt; String convertirMayusculas(T t){
-                    return t.toString().toUpperCase();
-                }
-            }
-        </code>
-        <code>
-            public class MainGeneric {
-                public static void main(String[] args) {
-                    String primeraPersona = "Juan";
-                    Integer segundaPersona = 25;
-                    System.out.println(UtilGeneric.convertirMayusculas(primeraPersona));
-                    System.out.println(UtilGeneric.convertirMayusculas(segundaPersona));
-                }
-            }
-        </code>
-        <p>Si quiero limitar el método a objetos de tipo String tendría que modificar el código al siguiente:</p>
-        <code>
-                public class UtilGenerics {
-                    public static &lt;T extends String&gt; String convertirMayusculas(T t){
-                        return t.toUpperCase();
-                    }
-                }
-        </code>
-        <p><strong>Importante:</strong> Si así lo hicera ahora el código del método main nos estaría dando un error y el
-            segundo sout marcaría un
-            error en tiempo de compilación pues no puede utilizar el método con parametros de tipo Integer y tendría que
-            colocar
-            un parametro unicamente de tipo String.
-        </p>
-        <p>Y si quiero que todas las subclases de tipo generico en lugar de utilizar una letra mayúscula como T, tendría
-            que utilizar una
-            interrogación.
-        </p>
-    </section>
-    <h2>Clases genéricas</h2>
-    <h3>Borrado de tipos genericos</h3>
-    <section>
-        <p>Si etiquetamos una clase con un genérico, el compilador de Java elimina todos los parámetros de tipo
-            (genéricos) y los reemplaza por su primer límite (bound) si el parámetro de tipo está limitado, o por
-            "Object" si el parámetro de tipo no está limitado.</p>
-        <code>
-            public class &lt;T extends Comparable&gt;{
-
-            }
-        </code>
-    <h2>Uso de genericos en argumentos variables</h2>
-    <code>
-        public class ArrayBuilder {
-
-            public static &lt;T&gt; void addToList (List&lt;T> listArg, T... elements) {
-              for (T x : elements) {
-                listArg.add(x);
-              }
-            }
-    </code>
-    </section>
-
-
+<nav>
+	<a href="./index.html">Indice</a>
+</nav>
+<h1>Generics</h1>
+<h2>¿Qué son?</h2>
+<p> Son una característica que permite crear clases, interfaces y métodos que pueden trabajar con diferentes tipos de
+	datos sin necesidad de modificar el código fuente. En otras palabras, los genéricos te permiten crear código
+	independiente del tipo de dato..
+</p>
+<p>
+	Imagina que necesitas crear una clase que almacena una lista de elementos. Sin usar genéricos, tendrías que crear
+	una clase para cada tipo de elemento que deseas almacenar, por ejemplo: List&lt;String>, &lt;/Integer>
+</p>
+<p>Con los genéricos, puedes crear una clase genérica List que puede almacenar cualquier tipo de dato:</p>
+<code>
+	List&lt;T>
+</code>
+<p>Un tipo genérico es una clase o interfaz genérica que está parametrizada sobre tipos</p>
+<p>La principal ventaja de los genéricos es la seguridad de tipo. Te permiten atrapar errores de tiempo de compilación
+	si intentas usar un tipo incorrecto en lugar del tipo esperado, lo que hace que tu código sea más robusto.
+</p>
+<p>Un ejemplo común es el uso de genéricos en listas, como ArrayList. En lugar de crear una lista específica para un
+	tipo de dato (por ejemplo, una lista de enteros o una lista de cadenas), puedes utilizar una lista genérica que
+	puede contener cualquier tipo de dato.
+</p>
+<p>Aquí hay un ejemplo sencillo de cómo se definen y utilizan genéricos en Java:</p>
+<code> class MiClaseGenerica
+	<T> { private T miDato; public MiClaseGenerica(T dato) { this.miDato = dato; } public T getDato() { return miDato; }
+		} public class EjemploGenericos { public static void main(String[] args) { MiClaseGenerica
+		<Integer> enteroGenerico = new MiClaseGeneric<>(42); MiClaseGenerica
+			<String> cadenaGenerica = new MiClaseGeneric<>("Hola, mundo"); Integer entero = enteroGenerico.getDato();
+				String cadena = cadenaGenerica.getDato(); System.out.println("Valor entero: " + entero);
+				System.out.println("Valor cadena: " + cadena); } }
+</code>
+<p>
+	En este ejemplo, T es un parámetro genérico que representa el tipo de dato que se utilizará en la instancia de
+	MiClaseGenerica. Puedes usar genéricos en clases, interfaces, métodos, y también en colecciones como Listas, Mapas,
+	y más.
+</p>
+<h2>¿Por qué utilizar genericos?</h2>
+<ul>
+	<li>Comprobaciones de tipos más estrictas en tiempo de compilación.Un compilador de Java aplica una verificación de
+		tipos estricta al código genérico y emite errores si el código viola la seguridad de tipos. Corregir errores en
+		tiempo de compilación es más fácil que corregir errores en tiempo de ejecución, que pueden ser difíciles de
+		encontrar.
+	</li>
+	<li>Eliminación de conversiones y los errores en tiempo de ejecución que esto puede suponer</li>
+	<code> List list = new ArrayList(); list.add("hello"); String s = (String) list.get(0); </code>
+	<p>Por:</p>
+	<code> List&lt;String> list = new ArrayList
+		<String>(); list.add("hello"); String s = list.get(0);
+	</code>
+	<li>Permitir a los programadores implementar algoritmos genéricos. Al utilizar genéricos, los programadores pueden
+		implementar algoritmos genéricos que funcionan en colecciones de diferentes tipos, se pueden personalizar y son
+		seguros y fáciles de leer.
+	</li>
+</ul>
+<h2>Conversión de una clase normal en clase generica</h2>
+<code> public class Box { private Object object; public void set(Object object) { this.object = object; } public Object
+	get() { return object; } } </code>
+<p>Dado que sus métodos aceptan o devuelven un Object , eres libre de pasar lo que quieras, siempre que no sea uno de
+	los tipos primitivos. No hay forma de verificar, en tiempo de compilación, cómo se usa la clase. Una parte del
+	código puede colocar un Integer en el cuadro y esperar obtener Integers de él, mientras que otra parte del código
+	puedes pasar por error un String. Esto dará como resultado en un error de tiempo de ejecución.
+</p>
+<p>En cambio:</p>
+<code> public class Box&lt;T&gt; { private T t; public void set(T t) { this.t = t; } public T get() { return t; }
+	} </code>
+<h2>Métodos genéricos</h2>
+<section>
+	<p>Los métodos genéricos son métodos que introducen sus propios parámetros de tipo. Esto es similar a declarar un
+		tipo genérico, pero el alcance del parámetro de tipo se limita al método donde se declara. Se permiten métodos
+		genéricos estáticos y no estáticos, así como constructores de clases genéricos.
+	</p>
+	<p>La sintaxis de un método genérico incluye una lista de parámetros de tipo, entre corchetes angulares, que aparece
+		antes del tipo de retorno del método. Para métodos genéricos estáticos, la sección de parámetro de tipo debe
+		aparecer antes del tipo de retorno del método.
+	</p>
+	<code> public class UtilGenerics { public static &lt;T&gt; String convertirMayusculas(T t){ return
+		t.toString().toUpperCase(); } } </code> <code> public class MainGeneric { public static void main(String[] args)
+	{ String primeraPersona = "Juan"; Integer segundaPersona = 25;
+	System.out.println(UtilGeneric.convertirMayusculas(primeraPersona));
+	System.out.println(UtilGeneric.convertirMayusculas(segundaPersona)); } } </code>
+	<p>Si quiero limitar el método a objetos de tipo String tendría que modificar el código al siguiente:</p>
+	<code> public class UtilGenerics { public static &lt;T extends String&gt; String convertirMayusculas(T t){ return
+		t.toUpperCase(); } } </code>
+	<p><strong>Importante:</strong> Si así lo hicera ahora el código del método main nos estaría dando un error y el
+		segundo sout marcaría un error en tiempo de compilación pues no puede utilizar el método con parametros de tipo
+		Integer y tendría que colocar un parametro unicamente de tipo String.
+	</p>
+	<p>Y si quiero que todas las subclases de tipo generico en lugar de utilizar una letra mayúscula como T, tendría que
+		utilizar una interrogación.
+	</p>
+</section>
+<h2>Clases genéricas</h2>
+<h3>Borrado de tipos genericos</h3>
+<section>
+	<p>Si etiquetamos una clase con un genérico, el compilador de Java elimina todos los parámetros de tipo (genéricos)
+		y los reemplaza por su primer límite (bound) si el parámetro de tipo está limitado, o por "Object" si el
+		parámetro de tipo no está limitado.
+	</p>
+	<code> public class &lt;T extends Comparable&gt;{ } </code>
+	<h2>Uso de genericos en argumentos variables</h2>
+	<code> public class ArrayBuilder { public static &lt;T&gt; void addToList (List&lt;T> listArg, T... elements) { for
+		(T x : elements) { listArg.add(x); } } </code>
+</section>
 </body>
-
 </html>

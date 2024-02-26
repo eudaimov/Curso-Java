@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Expresiones Lambda</title>
+	<link href="./style.css" rel="stylesheet">
+</head>
+<body>
+<h1>Expresiones Lambda</h1>
+<p>
+	Las expresiones lambda en Java son una característica introducida en Java 8 que te permite crear funciones anónimas.
+	Estas funciones se pueden usar en línea, sin necesidad de definirlas de forma tradicional con un nombre y un cuerpo.
+</p>
+<p>Ejemplo:</p>
+<p>Supongamos que queremos ordenar una lista de números de mayor a menor. Sin usar expresiones lambda, tendríamos que
+	crear una clase que implementa la interfaz Comparator y definir un método compare que compare dos números:
+</p>
+<code></code> class NumeroComparator implements Comparator &lt;Integer> { @Override public int compare(Integer num1,
+Integer num2) { return num2 - num1; } } List &lt;Integer> numeros = Arrays.asList(1, 5, 3, 2, 4); numeros.sort(new
+NumeroComparator());
+<p>Con las expresiones lambda, podemos escribir la misma lógica de comparación de forma más concisa:</p>
+<code> List&lt;Integer> numeros = Arrays.asList(1, 5, 3, 2, 4); numeros.sort((num1, num2) -> num2 - num1); </code>
+<p>
+	En este ejemplo, la expresión lambda (num1, num2) -> num2 - num1 define una función que toma dos números como
+	entrada y devuelve la diferencia entre ellos. Esta función se utiliza como argumento del método sort para ordenar la
+	lista de números de mayor a menor.
+</p>
+<h2>
+	Beneficios de usar expresiones lambda: </h2>
+<ul>
+	<li>
+		Código más conciso: Las expresiones lambda te permiten escribir código más corto y fácil de leer.
+	</li>
+	<li>
+		Mejora la legibilidad del código: El código con expresiones lambda es más expresivo y fácil de entender.
+	</li>
+	<li>
+		Simplifica el código funcional: Las expresiones lambda son una herramienta poderosa para escribir código
+		funcional en Java.
+	</li>
+</ul>
+<p>
+Algunos ejemplos de cómo se pueden usar las expresiones lambda: Ordenar colecciones Filtrar colecciones Implementar
+interfaces funcionales Pasar funciones como argumentos a otros métodos Crear flujos de datos con la API Stream
+</p>
+</body>
+</html>
