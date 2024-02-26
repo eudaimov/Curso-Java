@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colecciones</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <h1>Colecciones o Estructura de datos</h1>
+    <h2>¿Qué son las colecciones?</h2>
+    <p>Es un conjunto de elementos que se utiliza para manipular y almacenar datos de manera eficiente. Las colecciones
+        son más flexibles que los arrays, ya que permiten almacenar objetos de cualquier tipo y tamaño, y pueden crecer
+        o decrecer según sea necesario.</p>
+    <p>Ventajas de las colecciones en Java:</p>
+    <ul>
+        <li>
+            Son más flexibles que los arrays.
+        </li>
+        <li>
+            Pueden crecer o decrecer según sea necesario.
+        </li>
+        <li>
+            Proporcionan un conjunto de métodos para manipular los elementos de la colección.
+        </li>
+
+    </ul>
+    <p>Desventajas de las colecciones en Java:</p>
+    <ul>
+        <li>
+            Pueden ser más lentas que los arrays en algunas operaciones.
+        </li>
+        <li>
+            Requieren más memoria que los arrays.
+        </li>
+    </ul>
+
+
+    <p>Existen dos tipos de coleccines los Collections y los Maps.</p>
+
+    <h3>Colecciones:</h3>
+    <p>Las colecciones son estructuras de datos que almacenan un conjunto de elementos. Los elementos de una colección
+        pueden ser de cualquier tipo, y la colección puede ser ordenada o desordenada.</p>
+        <p>Los tipos de colecciones más comunes en Java son:</p>
+        <ul>
+            <li>
+                List: Las listas son colecciones ordenadas que permiten acceder a los elementos por posición de entrada.
+            </li>
+            <li>
+                Set: Los conjuntos son colecciones desordenadas que no permiten elementos duplicados.
+            </li>
+            <li>
+                Queue: Las colas son colecciones que permiten insertar elementos en un extremo y extraerlos en el otro.
+            </li>
+            <li>
+                Stack: Las pilas son colecciones que permiten insertar elementos en un extremo y extraerlos en el mismo extremo.
+            </li>
+        </ul>
+        <h3>Mapas</h3>
+        <p>Los mapas son estructuras de datos que asocian claves a valores. Las claves deben ser únicas, pero los valores pueden ser duplicados.</p>
+        <p>Los mapas más comunes en Java son:</p>
+        <ul>
+            <li>HashMap: Los HashMap son mapas que almacenan las claves y los valores en un hashtable.
+            </li>
+            <li>TreeMap: Los TreeMap son mapas que almacenan las claves y los valores en un árbol binario ordenado.
+            </li>
+            <li>LinkedHashMap: Los LinkedHashMap son mapas que almacenan las claves y los valores en una lista enlazada.
+            </li>
+        </ul>
+        <h3>Diferencias entre colecciones y mapas</h3>
+        <p>La principal diferencia entre colecciones y mapas es que las colecciones almacenan elementos, mientras que los mapas almacenan claves y valores.</p>
+        <p> Las colecciones pueden ser ordenadas o desordenadas, mientras que los mapas siempre son ordenados.</p>
+        <p>Las colecciones pueden contener elementos duplicados, mientras que los mapas no pueden contener claves duplicadas.</p>
+        <p>En conclusión, las colecciones y los mapas son dos tipos generales de colecciones en Java. Las colecciones almacenan elementos, mientras que los mapas almacenan claves y valores.</p>
+
+    <h2>Ordenar Colecciones</h2>
+    <p>Se realiza con el método sort el unico requisito es que implemente la interfaz comparator.</p>
+    <code>
+        List&lt;Personas> listadoPersonas = new ArrayList&lt;>():
+        listadoPersonas.sort(Comparator.comparting(Personas::getNombre()));
+        listadoPersonas.sort(Comparator.comparting(Personas::getNombre())).reversed();
+    </code>
+</body>
+
+</html>

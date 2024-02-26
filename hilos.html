@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hilos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Hilos</h1>
+<h2>¿Qué es?</h2>
+<p>
+    Son objetos que nos permiten realizar más de una tarea al mismo tiempo. Se pueden hacer de manera sincronizada. Si
+    se
+    hace de manera asíncrona cuando hay una información compartidad puede darse el caso de inconsistencia en los propios
+    datos.
+</p>
+<h3>Construcción:</h3>
+<p>Hay dos formas</p>
+<ul>
+    <li>Extendiendo de la clase Thread</li>
+    <li>Implementando la interfaz Runnable</li>
+</ul>
+<p>Ejemplos:</p>
+<code>
+
+    class ClaseThread extends Thread{
+    @Override
+    public void run(){
+    //Función que hace algo.
+    }
+    }
+
+    ClaseThread instanciaThread = new ClaseThread();
+    instanciaThread.start();
+</code>
+
+<code>
+    class ClaseThread implements Runnable{
+    @Override
+    public void run()(
+    //Función que hace algo.
+    }
+    }
+
+    Thread thread = new Thread(new ClaseThread());
+    thread.start();
+</code>
+<p>Es preferible utilizar la interfaz Runnable por que la clase está más desacoplada, en Java sólamente se puede
+    extender
+    de una clase no se puede extender de varias.</p>
+
+<h2>Ciclo de vida</h2>
+<ul>
+    <li>New: Se ha creado pero todavía no ha comenzado</li>
+    <li>Runnable: Se ha creado e inicado con el método start()</li>
+    <li>Blocked: Esta bloquedado, aunque está creado e iniciado se ha bloqueado</li>
+    <li>Waiting: Cuando esta esperando que un hilo realice una acción particular, sucede siempre que se utilice los mé-
+        todos .sleep() y método join()
+    </li>
+    <li>Terminated: Cuando finalizó la ejecución de un programa.</li>
+</ul>
+
+<h3>Métodos de la clase Thread</h3>
+run();
+start();
+sleep(1000);
+getState();
+wait();
+notify()
+notifyAll();
+interrupt(1000)
+<h3>Implementación con expresiones lambda.</h3>
+<p>Ejemplo:</p>
+<code>
+    Runnable claseAnonimaThread = ()-> {
+    System.out.println("Comienza "+ Thread.currentThread().getName());
+    for (int i = 0; i < 10; i++) {
+    System.out.println("Accion nº "+ i + " "+ Thread.currentThread().getName());
+    try {
+    Thread.sleep(1000);
+    } catch (InterruptedException e) {
+    throw new RuntimeException(e);
+    }
+    }
+    System.out.println("Finaliza "+ Thread.currentThread().getName());
+    };
+    new Thread(claseAnonimaThread, "Hilo 1").start();
+</code>
+<p>O bien:</p>
+<code>
+    Runnable claseAnonimaThread = new Runnable() {
+    @Override
+    public void run() {
+    System.out.println("Comienza "+ Thread.currentThread().getName());
+    for (int i = 0; i < 10; i++) {
+    System.out.println("Accion nº "+ i + " "+ Thread.currentThread().getName());
+    try {
+    Thread.sleep(1000);
+    } catch (InterruptedException e) {
+    throw new RuntimeException(e);
+    }
+    }
+    System.out.println("Finaliza "+ Thread.currentThread().getName());
+    }
+    };
+
+
+    new Thread(claseAnonimaThread, "Hilo 1").start();
+</code>
+
+<h3>sleep(1000ms) vs join()</h3>
+<p>
+    sleep(long millis): Este es un método estático de la clase Thread. Cuando se invoca, hace que el hilo que se está
+    ejecutando actualmente se pause durante el tiempo especificado (en milisegundos) e ingrese al estado de bloqueo.
+    Durante este tiempo, el hilo no realiza ninguna tarea3. Este método puede permitir que otros hilos con la misma
+    prioridad o alta prioridad tengan la oportunidad de ejecutarse. Sin embargo, el método sleep() no libera el
+    “indicador
+    de bloqueo”, lo que significa que si hay un bloque sincronizado, otros hilos aún no pueden acceder a los datos
+    compartidos.
+</p>
+<p>
+    join(): Este es un método de instancia de la clase Thread. Cuando se invoca en un hilo, el hilo actual se detiene
+    hasta
+    que el hilo en el que se invocó join() termina su ejecución. Si se invoca join(long millis), el hilo actual se
+    detendrá
+    hasta que el otro hilo termine su ejecución o hasta que pasen los milisegundos especificados, lo que ocurra primero.
+</p>
+
+
+En resumen, sleep() es una forma de hacer que un hilo se pause por un tiempo específico, mientras que join() es una
+forma de hacer que un hilo espere hasta que otro hilo termine su ejecución. Ambos métodos son útiles para controlar la
+ejecución de hilos en Java.
+
+</body>
+</html>
