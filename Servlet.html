@@ -104,15 +104,14 @@ ejemplo:</p>
 <h2>Métodos GET y POST</h2>
 <p>Vale más un ejemplo que mi palabras.</p>
 <code>
-	<pre>
-		 public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-			response.setContentType("text/html");
-	        PrintWriter out = response.getWriter();
-	        out.println("&lt;html&gt;&lt;body&gt;");
-	        out.println("&lt;h1&gt; Hola mundo&lt;/h1&gt;");
-	        out.println("&lt;/body&gt;&lt;/html&gt;");
-        }
-	</pre>
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	throws IOException {
+		response.setContentType("text/html");
+	    PrintWriter out = response.getWriter();
+	    out.println("&lt;html&gt;&lt;body&gt;");
+	    out.println("&lt;h1&gt; Hola mundo&lt;/h1&gt;");
+	    out.println("&lt;/body&gt;&lt;/html&gt;");
+	}
 </code>
 <h3>Para pasar un parámetro:</h3>
 <code>
