@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<link href="style.css" rel="stylesheet">
+	<title>Servlet</title>
+</head>
+<body>
+<h1>¿Qué es un Servlet?</h1>
+<p>Un servlet es un componente de software basado en Java que se usa para el desarrollo web. Concretamente, los servlets
+	son clases Java que se ejecutan en el servidor de una web para manejar las solicitudes HTTP y generar respuestas
+	dinámicas.
+</p>
+<p>Sus características principales son:</p>
+<ul>
+	<li>
+		Independencia. Un servlet es independiente de la plataforma, lo que quiere decir que pueden ejecutarse en
+		cualquier servidor que admita su aplicación. Esto aporta flexibilidad tanto a nivel de desarrollo como de
+		implementación.
+	</li>
+	<li>
+		Reutilización. Como casi todo en Java, los servlets son reutilizables. Este código permite a los desarrolladores
+		encapsular la lógica de la aplicación en componentes que son sencillos de invocar. La consecuencia de esto es la
+		reutilización del código en distintos proyectos, al escalabilidad de las aplicaciones y el fácil mantenimiento
+		de las mismas.
+	</li>
+	<li>
+		Interfaz. Todos los servlet en Java se implementan con la interfaz ‘javax.servlet.Servlet’(O jakarta en
+		versiones mas modernas ). Esta define los métodos que son necesarios para que funcione y proporciona una
+		estructura estandarizada para el desarrollo de servlets. Solicitudes y respuestas. Como hemos dicho, el servlet
+		es una clase de Java que maneja solicitudes HTTP. Se encargan de procesar parámetros de entrada y generar
+		respuestas dinámicas. La combinación de estos hace que se puedan crear aplicaciones web interactivas y
+		dinámicas.
+	</li>
+</ul>
+<h1>¿Cómo se hace?</h1>
+<p>Un Servlet es una clase Java que extiende de la interfaz HttpServlet y tiene diferentes métodos para sobreescribir
+	como doGet, doPost, etc.
+</p>
+<p>Un ejemplo básico de esto es:</p>
+<code>
+	<pre>
+		@WebServlet("/test")
+		public class ServletDestino extends HttpServlet {
+		private static final long serialVersionUID = 1L;
+			protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			  //Dos maneras.
+		        response.getWriter().println("Texto Plano");
+
+		        PrintWriter out = response.getWriter();
+		        out.println("Hola mundo");
+
+			}
+		}
+	</pre>
+</code>
+<h2>¿Como construir un entorno con IntellJ?</h2>
+<h3>Primera Opcion: Maven / arquetipo</h3>
+<ol>
+	<li>Tipo de Proyecto elige Archetype Maven</li>
+	<li>Luego selecciona el archetype webapp</li>
+	<img alt="arqchetypeWebapp" src="./img/archetype-webapp.png" style="width: 80%;">
+	<li>Da un nombre apropiado a tu proyecto</li>
+	<li>Descarga un servidor Tomcat</li>
+	<li>Ve a la configuración a la configuración de Run y Application Server selecciona la carpeta donde se encuentra el
+		Tomcat
+	</li>
+</ol>
+<h3>Segunda Opción con Jakarta</h3>
+<ol>
+	<li>Tipo de Proyecto Jakarta, configura igual que el pantallazo</li>
+	<img alt="" src="./img/jakarta.png">
+	<li>En el Tomcat utiliza la version 10 en la configuración de Run/Debug</li>
+	<li></li>
+	<li></li>
+</ol>
+<h2>¿Cómo crear un Servlet?</h2>
+<p>Se piden dos requisitos que este anotado con @WebServlet y extienda de la clase HttpServlet.</p>
+<p>Luego tiene que sobreescribir uno los métodos, dependiendo de petición petición: GET, POST, PUT, etc..</p>
+<p>Expliquemos un poco más en detalle la anotación @WebServlet.</p>
+<p>La anotación @WebServlet se utiliza en servlets de Jakarta para mapear una URL a un servlet específico. Esta
+	anotación se coloca en la clase del servlet.
+</p>
+<p>Sino colocas ningún parámetro el valor por defecto corresponde al value, que define la url que mapea el Servlet, por
+ejemplo:</p>
+<code>
+	<pre>
+		@WebServlet("/home")
+	</pre>
+</code>
+<p>Los parámetros mas frecuentes son name, value o urlPatterns. A continuación explicaré cada uno de los parámetros:</p>
+<ul>
+	<li>urlPatterns: Un array de cadenas que define las URLs que se mapean al servlet. Por ejemplo,
+		@WebServlet(urlPatterns = {"/hola", "/mundo"}) mapearía las URLs /hola y /mundo al servlet.
+	</li>
+	<li>name: Un nombre único para el servlet. Este nombre se puede usar para obtener una referencia al servlet desde el
+		contexto de la aplicación.
+	</li>
+	<li>displayName: Un nombre para mostrar para el servlet. Este nombre se puede usar en la interfaz de usuario de
+		administración.
+	</li>
+	<li>description: Una descripción del servlet.</li>
+</ul>
+<p>Hay algunos más como: initParams, asyncSupported, loadOnStartup, servletName, smallIcon, largeIcon, runAsRole</p>
+<h2>Métodos GET y POST</h2>
+<p>Vale más un ejemplo que mi palabras.</p>
+<code>
+	<pre>
+		 public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+			response.setContentType("text/html");
+	        PrintWriter out = response.getWriter();
+	        out.println("<html><body>");
+	        out.println("<h1> Hola mundo</h1>");
+	        out.println("</body></html>");
+        }
+	</pre>
+</code>
+<h3>Para pasar un parámetro:</h3>
+<code>
+	<pre>
+	    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+			String parametro = request.getParameter("parametro");
+			response.setContentType("text/html");
+	        PrintWriter out = response.getWriter();
+	        out.println("<html><body>");
+	        out.println("<p> Tu parametro es" + parametro + "</p>");
+	        out.println("</body></html>");
+        }
+	</pre>
+</code>
+</body>
+</html>

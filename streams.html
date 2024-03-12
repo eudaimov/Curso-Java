@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Stream</title>
+</head>
+<body>
+<h1>Stream</h1>
+<h2>¿Qué son?</h2>
+<p>
+	Los streams es otra de las características introducida en Java 8 que te permite procesar secuencias de datos de
+	forma eficiente. Los streams proporcionan un conjunto de operaciones para trabajar con datos de forma
+	declarativa(especifica qué se quiere obtener sin indicar cómo se debe obtener), sin necesidad de escribir bucles
+	explícitos.
+</p>
+<p>Ejemplo: Supongamos que queremos calcular la suma de todos los números pares en una lista. Sin usar streams,
+	tendríamos que escribir un bucle for para recorrer la lista y sumar los números pares:
+</p>
+<code> List &lt;Integer&gt;numeros = Arrays.asList(1, 2, 3, 4, 5); int sumaPares = 0; for (int num : numeros) { if (num
+	% 2 == 0) { sumaPares += num; } } </code>
+<p> Con los streams, podemos escribir la misma lógica de forma más concisa y eficiente:</p>
+<code>List &lt;Integer&gt; numeros = Arrays.asList(1, 2, 3, 4, 5); int sumaPares = numeros.stream().filter(num -> num %
+	2 == 0).sum(); </code>
+<p>En este ejemplo, el método stream crea un stream a partir de la lista números. El método filter se usa para filtrar
+	los números pares del stream. Finalmente, el método sum se usa para calcular la suma de los números pares.
+</p>
+<h2>
+	Beneficios de usar streams: </h2>
+<ul>
+	<li>
+		Código más conciso: Los streams te permiten escribir código más corto y fácil de leer.
+	</li>
+	<li>
+		Mejora la legibilidad del código: El código con streams es más expresivo y fácil de entender.
+	</li>
+	<li>
+		Procesamiento de datos eficiente: Los streams están optimizados para el procesamiento paralelo de datos, lo que
+		significa que pueden ser mucho más rápidos que los bucles tradicionales.
+	</li>
+	<li>
+		Compatibilidad con la API Lambda: Los streams se pueden usar con expresiones lambda para escribir código aún más
+		conciso y expresivo. Algunos ejemplos de cómo se pueden usar los streams: Filtrar datos Ordenar datos Agrupar
+		datos Calcular valores estadísticos Convertir datos a otros formatos
+	</li>
+</ul>
+</body>
+</html>
