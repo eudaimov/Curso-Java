@@ -41,7 +41,6 @@
 </p>
 <p>Un ejemplo básico de esto es:</p>
 <code>
-	<pre>
 		@WebServlet("/test")
 		public class ServletDestino extends HttpServlet {
 		private static final long serialVersionUID = 1L;
@@ -54,7 +53,6 @@
 
 			}
 		}
-	</pre>
 </code>
 <h2>¿Como construir un entorno con IntellJ?</h2>
 <h3>Primera Opcion: Maven / arquetipo</h3>
@@ -111,9 +109,9 @@ ejemplo:</p>
 		 public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 			response.setContentType("text/html");
 	        PrintWriter out = response.getWriter();
-	        out.println("<html><body>");
-	        out.println("<h1> Hola mundo</h1>");
-	        out.println("</body></html>");
+	        out.println("&lt;html&gt;&lt;body&gt;");
+	        out.println("&lt;h1&gt; Hola mundo&lt;/h1&gt;");
+	        out.println("&lt;/body&gt;&lt;/html&gt;");
         }
 	</pre>
 </code>
@@ -124,9 +122,9 @@ ejemplo:</p>
 			String parametro = request.getParameter("parametro");
 			response.setContentType("text/html");
 	        PrintWriter out = response.getWriter();
-	        out.println("<html><body>");
-	        out.println("<p> Tu parametro es" + parametro + "</p>");
-	        out.println("</body></html>");
+	        out.println("&lt;html&gt;&lt;body&gt;");
+	        out.println("&lt;p&gt; Tu parametro es" + parametro + "&lt;/p&gt;");
+	        out.println("&lt;/body&gt;&lt;/html&gt;");
         }
 	</pre>
 </code>
