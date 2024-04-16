@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Manejo de Sesiones</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>Manejo de sesiones</h1>
+	<h2>Introducción</h2>
+		<p>Es una opción para almacenar datos del cliente en el servidor. Cada vez que realizamos una petición a servidor con JavaEE en la misma petición (req) se
+		crea una cookie en el cliente: JSESSIONID</p>
+		<p>Los datos no se comparte con tras sesiones.</p>
+		<p>Las sesiones permiten mantener información del usuario entre diferentes peticiones</p>
+		<p>Contiene informaciónes de clave-valor. Pero realmente es un objeto con un conjunto de propiedades en el se están
+		guardando dichos valores.</p>
+	<h2>Crear sesiones</h2>
+	<section>
+		<p>Como anteriormente dijimos cada vez que se realiza un petición se crea una sesión diferente si el usuario es diferente. Esto se realiza a traves de la cookie de sesión
+		jsessionid.</p>
+		<p>Para obtener la sesión se realiza de la siguiente manera.</p>
+		<p class="code">
+			HttpSession httpSession = request.getSession();
+		</p>
+		<p>Para guardar información se realiza de la siguiente manera.</p>
+		<p class="code">
+			httpSession.setAttribute("clave","valor");
+		</p>
+		<p>Para rescatar o leer una propiedad se realiza de la siguiente manera:</p>
+		<p class="code">
+			String valor = httpSession.getAttribute("clave");</p>
+		<p>Para eliminar un valor de la sesion se realiza de la siguiente manera</p>
+		<p class="code">
+			httpSession.removeAttribute("clave");
+		</p>
+		<p>Para eliminar la sesión actual:</p>
+		<p class="code">
+			httpSession.invalidate();
+		</p>
+	</section>
+</body>
+</html>
