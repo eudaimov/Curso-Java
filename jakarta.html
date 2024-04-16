@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Jakarta</title>
+</head>
+<body>
+<h1>Jakarta EE</h1>
+<h2>¿Qué es Jakarta EE</h2>
+<section>
+    <p>Jakarta EE, anteriormente conocido como Java EE (Java Platform, Enterprise Edition), es una plataforma de
+        desarrollo de software empresarial basada en Java. Fue desarrollada originalmente por Sun Microsystems
+        (posteriormente adquirida por Oracle Corporation) y ahora es mantenida por la comunidad de software libre a
+        través de la Eclipse Foundation.</p>
+    <p>Ofrece un conjunto de especificaciones y API que facilita la creación de aplicaciones escalables, robustas y
+        seguras</p>
+    <p>Estas especificaciones abarcan una amplia gama de tecnologías para el desarrollo de aplicaciones empresariales,
+        incluyendo:</p>
+    <ul>
+        <li>Servlets: Para el desarrollo de aplicaciones web.</li>
+        <li>JavaServer Pages (JSP): Para la creación de vistas dinámicas en aplicaciones web.</li>
+        <li>Enterprise JavaBeans (EJB): Para la creación de componentes de negocio y lógica empresarial.</li>
+        <li>Java Persistence API (JPA): Para el acceso a bases de datos de manera orientada a objetos.</li>
+        <li>Java Message Service (JMS): Para la comunicación asíncrona entre componentes de la aplicación.</li>
+        <li>Java API for RESTful Web Services (JAX-RS): Para el desarrollo de servicios web RESTful.</li>
+        <li>JavaServer Faces (JSF): Para la creación de interfaces de usuario basadas en componentes.</li>
+    </ul>
+    <p>Jakarta EE pueden ejecutarse en una amplia gama de servidores de aplicaciones compatibles con Java EE, lo que
+        permite a los desarrolladores desplegar sus aplicaciones en diferentes entornos de manera flexible.</p>
+</section>
+<h2>Primeros Pasos con Tomcat 10 y Jakarta</h2>
+<ol>
+    <li>Descargamos la version 64bit Windows zip</li>
+    <li>Configuramos el usuario. Vamos a conf>tomcat-users.xml y copiamos un usuario</li>
+    <code>
+        &lt;user username="administrador" password="1234" roles="admin, manager-gui, manager-script"/&gt;
+    </code>
+    <li>Creamos un proyecto Java con Maven.</li>
+</ol>
+<h2>Creacion de un proyecto Jakarta con maven</h2>
+<p>Creamos un proyecto Java con Maven</p>
+<p>Configuramos el pom de la siguiente manera</p>
+<code>
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+        &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+        &lt;groupId&gt;es.felix&lt;/groupId&gt;
+        &lt;artifactId&gt;JakartaEjemplo&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;name&gt;JakartaEjemplo&lt;/name&gt;
+        &lt;packaging&gt;war&lt;/packaging&gt;
+
+        &lt;properties&gt;
+            &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+            &lt;maven.compiler.target&gt;11&lt;/maven.compiler.target&gt;
+            &lt;maven.compiler.source&gt;11&lt;/maven.compiler.source&gt;
+            &lt;junit.version&gt;5.9.2&lt;/junit.version&gt;
+        &lt;/properties&gt;
+
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;jakarta.platform&lt;/groupId&gt;
+                &lt;artifactId&gt;jakarta.jakartaee-api&lt;/artifactId&gt;
+                &lt;version&gt;9.1.0&lt;/version&gt;
+                &lt;scope&gt;provided&lt;/scope&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.hibernate.orm&lt;/groupId&gt;
+                &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+                &lt;version&gt;6.0.2.Final&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.glassfish.jaxb&lt;/groupId&gt;
+                &lt;artifactId&gt;jaxb-runtime&lt;/artifactId&gt;
+                &lt;version&gt;3.0.2&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+                &lt;artifactId&gt;junit-jupiter-api&lt;/artifactId&gt;
+                &lt;version&gt;${junit.version}&lt;/version&gt;
+                &lt;scope&gt;test&lt;/scope&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+                &lt;artifactId&gt;junit-jupiter-engine&lt;/artifactId&gt;
+                &lt;version&gt;${junit.version}&lt;/version&gt;
+                &lt;scope&gt;test&lt;/scope&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+
+        &lt;build&gt;
+            &lt;plugins&gt;
+                &lt;plugin&gt;
+                    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                    &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+                    &lt;version&gt;3.3.2&lt;/version&gt;
+                    &lt;configuration&gt;
+                        &lt;!--                    Si falta el archivo web.xml dentro de WEB-INF se salta este error--&gt;
+                        &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;
+                    &lt;/configuration&gt;
+                &lt;/plugin&gt;
+
+            &lt;/plugins&gt;
+        &lt;/build&gt;
+    &lt;/project&gt;
+</code>
+<p>Creamos una carpeta webapp dentro de la carpeta main y dentro creamos un index.html</p>
+</body>
+</html>

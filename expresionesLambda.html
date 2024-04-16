@@ -17,11 +17,19 @@
 <p>Supongamos que queremos ordenar una lista de números de mayor a menor. Sin usar expresiones lambda, tendríamos que
 	crear una clase que implementa la interfaz Comparator y definir un método compare que compare dos números:
 </p>
-<code></code> class NumeroComparator implements Comparator &lt;Integer> { @Override public int compare(Integer num1,
-Integer num2) { return num2 - num1; } } List &lt;Integer> numeros = Arrays.asList(1, 5, 3, 2, 4); numeros.sort(new
-NumeroComparator());
+<code>class NumeroComparator implements Comparator &lt;Integer> {
+	@Override public int compare(Integer num1,Integer num2) {
+		return num2 - num1; }
+	}
+	--------------------------------------------------------------------
+List &lt;Integer> numeros = Arrays.asList(1, 5, 3, 2, 4);
+numeros.sort(new NumeroComparator());
+</code>
 <p>Con las expresiones lambda, podemos escribir la misma lógica de comparación de forma más concisa:</p>
-<code> List&lt;Integer> numeros = Arrays.asList(1, 5, 3, 2, 4); numeros.sort((num1, num2) -> num2 - num1); </code>
+<code>
+	List&lt;Integer> numeros = Arrays.asList(1, 5, 3, 2, 4);
+	numeros.sort((num1, num2) -> num2 - num1);
+</code>
 <p>
 	En este ejemplo, la expresión lambda (num1, num2) -> num2 - num1 define una función que toma dos números como
 	entrada y devuelve la diferencia entre ellos. Esta función se utiliza como argumento del método sort para ordenar la
