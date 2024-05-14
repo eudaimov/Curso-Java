@@ -17,26 +17,26 @@
     @Entity
     @Table(name="clientes_detalle")
     public class clienteDetalle{
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-    @Column(name="puntos_acumulados")
-    private Long puntosAcumulados;
-    @OneToOne
-    private Cliente cliente;
+        @Id
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
+        private Long id;
+        @Column(name="puntos_acumulados")
+        private Long puntosAcumulados;
+        @OneToOne
+        private Cliente cliente;
     }
     /******************************************/
     @Entity
     @Table(name="clientes)
     public class Cliente{
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-    @Column(name="nombre")
-    private String nombre;
+        @Id
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
+        private Long id;
+        @Column(name="nombre")
+        private String nombre;
     }
 </code>
-<p>Si utilizamos Jakarta acuerdate de registrarlo en persistence.xml</p>
+<p>Si utilizamos Jakarta acuérdate de registrarlo en persistence.xml</p>
 <h2>OneToOneBidireccional</h2>
 <code>
     @Entity
@@ -86,9 +86,9 @@
 <h2>FetchType: Lazy or Eager</h2>
 <section>
     <p>Fetch significa Ir a buscar, traer a, extraer. En Hibernate define cuando se obtiene los datos de tablas relacionadas.</p>
-    <p>Lazy es la carga de de datos relacionados de tablas perezosa, es decir, que solo se produce bajo demanda. Por defecto
+    <p>Lazy es la carga de datos relacionados de tablas perezosa, es decir, que solo se produce bajo demanda. Por defecto
     se produce en las relaciones OneToMany y ManyToMany</p>
-    <p>Eager es la carga temprana(ansiosa) de datos de las tablas relacionadas. Por defecto se produce en las las relaciones
+    <p>Eager es la carga temprana(ansiosa) de datos de las tablas relacionadas. Por defecto se produce en las relaciones
     OneToOne</p>
 </section>
 </body>
