@@ -122,7 +122,50 @@ ejemplo:</p>
 	        out.println("&lt;html&gt;&lt;body&gt;");
 	        out.println("&lt;p&gt; Tu parametro es" + parametro + "&lt;/p&gt;");
 	        out.println("&lt;/body&gt;&lt;/html&gt;");
+			out.close();
         }
 </code>
+<p>Hay otra forma es redirigir a jsp</p>
+<code>@WebServlet(name="SegundoPagina", value="/ejemploPagina")
+	public class PaginaSegunda extends HttpServlet {
+		private String parametro;
+		@Override
+		public void init() throws ServletException {
+			parametro = "Hola mundo";
+		}
+		@Override
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			// Redireccionar a la página JSP
+			String urlJSP = "./test.jsp";
+			HttpSession session = req.getSession();
+			session.setAttribute("parametro", parametro);
+			resp.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+			resp.setHeader("Location", urlJSP);
+			resp.sendRedirect(urlJSP);
+		}
+	}
+</code>
+<p>Y en el jsp:</p>
+<code><p><%=session.getAttribute("parametro")%></p></code>
+<p>Y otra forma es pasarlo a través de una url los parámetros;</p>
+<code>
+	@WebServlet(name="PaginaPorParametro", value="/paginaParametros")
+		public class PaginaArgumentosUrl extends HttpServlet {
+		private String parametro;
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			// Redireccionar a la página JSP
+			parametro = req.getParameter("parametro");
+			String urlJSP = "./test.jsp";
+			HttpSession session = req.getSession();
+			session.setAttribute("parametro", parametro);
+			resp.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+			resp.setHeader("Location", urlJSP);
+			resp.sendRedirect(urlJSP);
+		}
+	}
+</code>
+<p>Y la url sería: http://localhost:8080/JakartaEjemplo/paginaParametros?parametro=Hola%20Felix</p>
+
+
 </body>
 </html>

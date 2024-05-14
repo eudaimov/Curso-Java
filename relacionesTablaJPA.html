@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Relaciones</title>
+</head>
+<body>
+<h1>OnetoOne unidireccional</h1>
+<p>Son relaciones de Tabla de un registro a otro único registro de la tabla.</p>
+<p>Allí donde se encuentre la anotación @OneToOne se creará la clave foránea</p>
+<p>Ejemplo</p>
+<code>
+    @Entity
+    @Table(name="clientes_detalle")
+    public class clienteDetalle{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="puntos_acumulados")
+    private Long puntosAcumulados;
+    @OneToOne
+    private Cliente cliente;
+    }
+    /******************************************/
+    @Entity
+    @Table(name="clientes)
+    public class Cliente{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="nombre")
+    private String nombre;
+    }
+</code>
+<p>Si utilizamos Jakarta acuerdate de registrarlo en persistence.xml</p>
+<h2>OneToOneBidireccional</h2>
+<code>
+    @Entity
+    @Table(name="clientes_detalle")
+    public class ClienteDetalle{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="puntos_acumulados")
+    private Long puntosAcumulados;
+    @OneToOne
+    @JoinColumn(name="cliente_id")
+    private Cliente cliente;
+    }
+    /******************************************/
+    @Entity
+    @Table(name="clientes)
+    public class Cliente{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="nombre")
+    private String nombre;
+    @OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="cliente")
+    private ClienteDetalle clienteDetalle;
+    }
+</code>
+<h2>Relación ManyToMany</h2>
+<section>
+    <p>Lo vamos a utilizar entre Roles y Usuarios.</p>
+    <code>
+        @Entity
+        @Table(name="usuarios")
+        public class Usuario{
+        @Id
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
+        private Long id;
+        @Column(name="puntos_acumulados")
+        private Long puntosAcumulados;
+        private String nombre;
+        private List&lt;Rol> roles;
+        //Getter and Setter and ToString
+        }
+        /************************************/
+    </code>
+</section>
+<h2>FetchType: Lazy or Eager</h2>
+<section>
+    <p>Fetch significa Ir a buscar, traer a, extraer. En Hibernate define cuando se obtiene los datos de tablas relacionadas.</p>
+    <p>Lazy es la carga de de datos relacionados de tablas perezosa, es decir, que solo se produce bajo demanda. Por defecto
+    se produce en las relaciones OneToMany y ManyToMany</p>
+    <p>Eager es la carga temprana(ansiosa) de datos de las tablas relacionadas. Por defecto se produce en las las relaciones
+    OneToOne</p>
+</section>
+</body>
+</html>
