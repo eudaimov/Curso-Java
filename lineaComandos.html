@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Linea comandos</title>
+</head>
+<body>
+<h1>Línea comandos</h1>
+<h2>Introducción</h2>
+
+<p>El bytecode Java es un archivo con extensión .class y es el archivo generado a partir
+    del archivo .java. En el estas las instrucciones que la máquina virtual Java (JVM) es capaz de
+    compilar al lenguaje máquina con el compilador JIT para posteriormente poder ejecutar las acciones.
+</p>
+<p> Esta característica lo hace independiente de la arquitectura sobre la que se va a ejecutar.
+    En Java, se sigue una arquitectura diferente. Se pasa de un modelo en el que el código de alto nivel es
+    compilado a código máquina directamente, a un modelo en el que el código Java de alto nivel es compilado a código
+    intermedio, que es interpretado por una máquina virtual (JVM) que encapsula el funcionamiento de la máquina física
+    real subyacente.</p>
+<p>El código binario de Java para esta máquina virtual recibe el nombre de Bytecode. Este código binario de Java es
+    transformado a código binario de la máquina real por la máquina virtua a través de su compilador JIT (Just in Time)
+    en el momento de la ejecución. Por tanto, si tenemos un programa Java ya compilado, podrá ser ejecutado en una
+    máquina virtual, con independencia de la máquina real (Hardware + SO) en la que está instalada esa máquina
+    virtual.</p>
+<p>Se relega entonces el problema no a disponer de una versión compilada de nuestro programa para cada plataforma
+    destino (como sucede en C o Pascal por ejemplo), sino a tener una sola versión compilada de nuestro programa Java en
+    ByteCode y disponer de una máquina virtual para cada plataforma (principio WORA: Write Once Run Anywhere -escribe
+    una vez, ejecuta en cualquier lugar-). Como podrás suponer las máquina virtuales son creadas por terceros, asi que
+    en realidad nos están quitando trabajo (tedioso) que realizar: no sólo compilar para cada plataforma, sino
+    asegurarnos que nuestro código respeta las peculiaridades de la plataforma destino. Además podemos beneficiarnos de
+    mejoras en las máquinas virtuales fácilmente.</p>
+
+<h2>Compilar</h2>
+<p>Notas Importante: Para Compilar en terminal nos situaremos en la terminal en la carpeta donde se encuentra nuestro
+    archivo .java</p>
+<ol>
+    <li>
+        Introducimos javac nombreArchivo.java o javac nombreArchivo.java -d ./carpetaClass (para colocar el archivo de
+        salida). Si en lugar de poner nombreArchivo.java ponemos *.java Esto compilara todo.
+    </li>
+    <li>Para compilar todos los archivos: javac *.java</li>
+    <li>Para compilar con codificación UTF-8: javac *.java -encoding UTF-8</li>
+</ol>
+<h2>Para empaquetar</h2>
+<ul>
+    <li>Un archivo .class especifico: jar cf salida.jar archivo.class</li>
+    <li>Todos los archivos .class: jar cf salida.jar .</li>
+    <li>Todos los archivos cambiando el directorio de salida: jar cf nombrePaquete.jar -C
+        /ruta/a/directorio_de_salida .
+    </li>
+</ul>
+<p></p>
+<h2>Para Ejecutar</h2>
+<p>Recuerda que siempre tienes que estar situado en la carpeta donde se debe ejecutar.</p>
+<ol>
+    <li>Simple: java nombreDelArchivo (sin extension)</li>
+    <li>Con argumentos: java nombreArchivo Argumento1 Argumento2</li>
+</ol>
+<h2>Pasar Argumentos en IntelliJ</h2>
+<ol>
+    <li>Nos vamos a Editar Configuración o los tres puntitos que hay en la clase.
+        <br><img src="img/Argumentos.png" style="width: 90%"></li>
+    <li>Introducimos los argumentos
+        <br/><img alt="introducir argumentos" src="./img/Argumento2.png" style="width: 90%">
+    </li>
+</ol>
+</body>
+</html>
