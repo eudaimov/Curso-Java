@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Thymeleaf</title>
+    <link href="./img/JavaIcon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<h1>Thymeleaf</h1>
+<h2>¿Qué es?</h2>
+<p>
+    Thymeleaf es un moderno motor de plantillas Java del lado del servidor para entornos web e independientes, capaz de
+    procesar HTML, XML, JavaScript, CSS e incluso texto sin formato.
+</p>
+<p>El objetivo principal de Thymeleaf es proporcionar una forma elegante y fácil de mantener de crear plantillas. Para
+    lograr esto, se basa en el concepto de plantillas naturales para inyectar su lógica en los archivos de plantilla de
+    una manera que no afecte el uso de la plantilla como prototipo de diseño. Esto mejora la comunicación del diseño y
+    cierra la brecha entre los equipos de diseño y desarrollo.</p>
+<p>Thymeleaf también ha sido diseñado desde el principio teniendo en cuenta los estándares web, especialmente HTML5 , lo
+    que le permite crear plantillas completamente validadas si así lo necesita.</p>
+<h2>Uso</h2>
+<p>Agregaremos xmlns:th atributo a nuestra &lt;html>etiqueta, algo que no es en absoluto HTML5:</p>
+<code>&lt;html xmlns:th="http://www.thymeleaf.org"&gt;</code>
+<h3>Usando th:text y externalizando texto</h3>
+<p>Externalizar texto consiste en extraer fragmentos de código de plantilla de los archivos de plantilla para que puedan
+    guardarse en archivos separados (normalmente messages.properties) y puedan reemplazarse fácilmente con textos
+    equivalentes escritos en otros idiomas (un proceso llamado internacionalización o simplemente i18n ). </p>
+<p>Para cambiar el archivo de mensaje se realizar application.properties y se pone lo siguiente</p>
+<code>
+    spring.messages.basename=nombreArchivo;
+</code>
+<p>Los fragmentos de texto externalizados suelen denominarse “mensajes”.</p>
+<p>Los mensajes siempre tienen una clave que los identifica, y Thymeleaf te permite especificar que un texto debe
+    corresponder a un mensaje específico con la #{...}sintaxis:</p>
+<code>
+    &lt;p th:text="#{home.welcome}"&gt;Welcome to our grocery store!&lt;/p&gt;
+</code>
+
+<h2>El Controlador: @Controller </h2>
+<h3>Diferencias entre @Controller y @RestController</h3>
+<p>La principal diferencia entre usar @Controller y @RestController en Thymeleaf reside en el tipo de respuesta que se
+    genera y en cómo se maneja la renderización de vistas.</p>
+<p>@Controller:</p>
+<p>Se utiliza para crear controladores tradicionales de Spring MVC que devuelven vistas (como HTML, JSP o Thymeleaf) al
+    cliente.</p>
+<p>El controlador interactúa con un resolvedor de vistas para mapear el valor de retorno del método a una plantilla de
+    vista específica.</p>
+<p>El resolvedor de vistas procesa la plantilla y la combina con los datos del modelo para generar una respuesta HTML
+    completa.</p>
+<p>
+    @RestController:
+</p>
+
+<p>Es una anotación especializada para crear controladores RESTful que devuelven datos directamente al cliente en
+    formato JSON o XML.</p>
+<p>Combina las anotaciones @Controller y @ResponseBody, lo que significa que el valor de retorno del método se serializa
+    automáticamente en el formato de respuesta deseado.</p>
+<p>No se utiliza un resolvedor de vistas, ya que la respuesta es solo un conjunto de datos.</p>
+<p><strong>En resumen:</strong></p>
+<p>Para utilizar Thymeleaf lo adecuado es  utilizar @Controller el cual podrás utilizar un modelo(Model) con el que comunicarte con
+    la vista</p>
+
+<h2>Model</h2>
+<p>Es un propiedad/clase que va en el método del controlador y nos sirve para comunicarnos con la vista. Alguno de los
+    métodos más utilizados son:</p>
+<code>
+    model.addAttribute("saludo", "holaMundo"}
+</code>
+<p>Se puede pasar un texto, como cualquier otra cosa, objeto/s, colecciones, número/s ....</p>
+<p>
+    Las principales ventajas de usar el Model en Thymeleaf:
+</p>
+<ul>
+    <li>
+        Separación de preocupaciones: Promueve la separación entre la lógica del servidor y la presentación de la vista.
+    </li>
+    <li>
+        Reutilización de código: Permite compartir datos entre diferentes partes de la aplicación.
+    </li>
+    <li>
+        Plantillas más limpias y expresivas: Reduce la necesidad de código Java incrustado en las plantillas Thymeleaf.
+    </li>
+</ul>
+<p>
+    La plantilla Thymeleaf puede acceder a los datos del Model utilizando expresiones Thymeleaf, como:
+</p>
+<code>
+    ${atributoModel}
+</code>
+</body>
+</html>

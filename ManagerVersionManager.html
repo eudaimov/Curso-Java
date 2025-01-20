@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Manager Version Manager</title>
+</head>
+<body>
+    <h1>Introducción</h1>
+    <p>Existen varios programas que se encargan de administrar la instalación de las diferentes versiones JDK y conviene conocer al menos uno.
+    En nuestro caso nos encargaremos de SDKMAN.</p>
+	<p>Solo funciona en windows con PowerShell 7 no funciona con el cmd</p>
+	
+    <h2>Instalación en Windows.</h2>
+    <p>En nuestra terminal de powerShell escribimos lo siguiente:</p>
+    <p class="code">
+        Install-Module -Name posh-sdk
+    </p>
+    <p>Mirar lo siguiente:</p>
+    <p class="code">
+        notepad $PROFILE
+        // y debe aparecer:
+        Import-Module Posh-SDKMan
+    </p>
+    <p>Si te da error sdk version prueba a crear un archivo VERSION.txt con el siguiente contenido
+       2.0.0 en la carpeta: C:\Users\[Usuario]\Documents\PowerShell\Modules\Posh-SDKMan\2.0.0</p>
+    <h1>Uso:</h1>
+    <ul>
+    	<li>sdk version: Para ver la version:<br>
+            <i>posh-sdk (POwer SHell Groovy enVironment Manager) 2.0.0 base on SDKMAN! 1.3.13 and SDKMAN! API 5.18.2</i>
+        </li>
+    	<li>
+            sdk help: Para ver la ayuda.
+        </li>
+    	<li>sdk offline enable|disable</li>
+    	<li>
+            sdk list java | maven | gradle | ant Para listar versiones de sdk disponible
+        </li>
+        <p>Para un listado completo visitar: <a href="https://sdkman.io/sdks">SDK's</a></p>
+    	<li>sdk install java )o cualquier otra sdk) version Para instalar.</li>
+    	<li>sdk use java 8.0.422-zulu Para cambiar y utilizar otra sdk.</li>
+    	<li>sdk selfupdate force Para actualizar los listados</li>
+    	<li>sdk current java. La version que se esta utilizando.</li>
+    	<li></li>
+    	<li></li>
+    	</ul>
+    
+</body>
+</html>

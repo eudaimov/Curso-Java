@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Logger</title>
+	<link href="./img/JavaIcon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Logger</h1>
+    <h2>Introducción</h2>
+    <section>
+        <p>Los logger son una herramienta en Java que se utilizar para registrar mensajes de una aplicación
+        Estos mensajes pueden ser útiles para depuración de errores, monitoreo y análisis de comportamiento
+            del programa.</p>
+        <p>
+            La clase principal en Java sin necesidad de instalar ninguna dependencia es Java.Util.Logging.Logger.
+        </p>
+        <p>
+            Los principales librerías de logs son SLF4J, Log4j2 de Apache, LogBack y JBossLoggin.
+        </p>
+    </section>
+    <h2>Niveles de Log</h2>
+    <section>
+        <p>Existen diferentes niveles de Logs y dependen de la librería que estes utilizando.</p>
+        <p>Clasica e interna de Java</p>
+        <ul>
+        	<li>FINEST</li>
+        	<li>FINER</li>
+        	<li>FINE</li>
+        	<li>CONFIG</li>
+        	<li>INFO</li>
+        	<li>WARNING</li>
+        	<li>SEVERE</li>
+        	</ul>
+        <p>Librerías actuales:</p>
+        <ol>
+        	<li>ALL</li>
+        	<li>Trace</li>
+        	<li>Debug</li>
+        	<li>Info</li>
+        	<li>Warn</li>
+        	<li>Error</li>
+            <li>Fatal</li>
+        	</ol>
+    </section>
+    
+    <h2>Configuración</h2>
+    <h3>Log interno de Java</h3>
+    <section>
+		<p>La configuración de logger se puede realizar mediante un archivo de propiedades (logging.properties)</p>
+	    <p>logger.properties </p>
+    </section>
+	<h3>Log de LogBack</h3>
+	<section>
+		<p>Se guarda en la carpeta resource en el archivo logback.xml</p>
+	</section>
+	
+	<h2>Utilización</h2>
+	<pre><code>
+		 public static void main(String[] args) {
+                logger.setLevel(Level.ALL);
+                ConsoleHandler handler = new ConsoleHandler();
+                handler.setLevel(Level.ALL);
+		        logger.addHandler(handler);
+		        logger.severe("Mensaje de nivel SEVERE");
+		}
+	</code></pre>
+	
+	<h2>Principales Librerias de Logs:</h2>
+	<h3>Log4j</h3>
+	<section>
+		<p>Descripción: Una de las librerías de logging más antiguas y populares. Ofrece una gran
+		   flexibilidad y es altamente configurable.</p>
+		<p>Características: Soporte para múltiples niveles de log, configuración mediante archivos
+		   XML o propiedades, y capacidad para log rotativo.</p>
+		<p>Ejemplo:<p>
+		<pre>
+			<code>
+				import org.apache.log4j.Logger;
+
+				public class EjemploLog4j {
+				    private static final Logger logger = Logger.getLogger(EjemploLog4j.class);
+				
+				    public static void main(String[] args) {
+				        logger.info("Mensaje informativo");
+				        logger.error("Mensaje de error");
+				    }
+				}
+			</code>
+	</pre>
+	</section>
+	<h3>SLF4J (Simple Logging Facade for Java):</h3>
+	<section>
+		<p>Descripción: No es una librería de logging en sí, sino una fachada que permite a los
+		   desarrolladores utilizar diferentes librerías de logging (como Log4j, Logback) sin cambiar el código de la aplicación.</p>
+		<p>Características: Abstracción sobre varias implementaciones de logging, lo que facilita cambiar de una librería a otra.</p>
+		<p>Ejemplo:</p>
+		<pre><code>
+			import org.slf4j.Logger;
+			import org.slf4j.LoggerFactory;
+			
+			public class EjemploSLF4J {
+			    private static final Logger logger = LoggerFactory.getLogger(EjemploSLF4J.class);
+			
+			    public static void main(String[] args) {
+			        logger.info("Mensaje informativo");
+			        logger.error("Mensaje de error");
+			    }
+			}
+		</code></pre>
+	</section>
+	<h3>Logback:</h3>
+	<section>
+		<p>Descripción: Desarrollada por el creador de Log4j, es considerada su sucesora.
+		   Ofrece mejor rendimiento y es más moderna.</p>
+		<p>
+			Características: Configuración mediante archivos XML o Groovy, soporte para log rotativo y filtrado avanzado.
+		</p>
+		<p>Ejemplo:</p>
+		<pre><code>
+			import org.slf4j.Logger;
+			import org.slf4j.LoggerFactory;
+			
+			public class EjemploLogback {
+			    private static final Logger logger = LoggerFactory.getLogger(EjemploLogback.class);
+			
+			    public static void main(String[] args) {
+			        logger.info("Mensaje informativo");
+			        logger.error("Mensaje de error");
+			    }
+			}
+		</code></pre>
+	</section>
+	<h3>Log4j2</h3>
+	<section>
+		<p>Descripción: La versión mejorada de Log4j, con mejoras en rendimiento y características
+		   adicionales.</p>
+		<p>Características: Mejor rendimiento que Log4j, configuración flexible, y soporte para
+		   JSON, XML y YAML.
+		</p>
+	</section>
+</body>
+</html>
