@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaFX</title>
+</head>
+<body>
+<h1>JavaFX</h1>
+<h2>Definición</h2>
+<p> Es la plataforma de código abierto para crear aplicaciones de escritorio o móviles de Java</p>
+<h2>La base</h2>
+<p>La base de cualquier aplicación JavaFX son:</p>
+<ul>
+    <li>Stage</li>
+    <li>Scene</li>
+    <li>Node</li>
+</ul>
+<p>Hay tres tipos de Nodo: Raiz, Rama y Hoja.</p>
+
+<p>Un código base del que partir sería:</p>
+<p class="code">
+    public class HelloApp extends Application {
+
+    private Parent createContent() {
+    return new StackPane(new Text("Hello World"));
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+    stage.setScene(new Scene(createContent(), 300, 300));
+    stage.show();
+    }
+
+    public static void main(String[] args) {
+    launch(args);
+    }
+    }
+</p>
+<h2>Nodos</h2>
+<h3>TableView</h3>
+<h3>Label</h3>
+<h3>Button</h3>
+<h3>Formas</h3>
+<h3>Hipervínculos</h3>
+<h3>TextField, TextArea y ComboBox</h3>
+<h3>RadioButton</h3>
+<h3>ProgressBar</h3>
+
+
+<h2>Nodos Disposición</h2>
+<h3>VBox y HBox</h3>
+<h3>StackPane (Panel de Pila)</h3>
+<h3>Pane(Posicionamiento Absoluto)</h3>
+<h3>Recorte</h3>
+<h3>Cuadricula: GridPane</h3>
+<h3>Anclajes</h3>
+<h3>Mosaicos: TilePane</h3>
+<h3>Panel con títulos.</h3>
+
+<h2>Implementando aplicación con WebClient</h2>
+<h2>WebGrafia</h2>
+<p><a href="https://fxdocs.github.io/docs/html5/">Documentos de la comunidad</a></p>
+
+</body>
+</html>
