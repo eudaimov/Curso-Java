@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Swing</h1>
+<h2>Comparativa en Swing y JavaFx</h2>
+<p>La elección entre Swing y JavaFX para desarrollar aplicaciones de escritorio depende de varios factores, como las
+    necesidades del proyecto, los recursos disponibles y tus preferencias personales. A continuación, comparo ambos para
+    ayudarte a decidir cuál es mejor para tu caso:</p>
+
+<h3>1. Swing</h3>
+<h4>Ventajas:</h4>
+<ol>
+    <li>Madurez y estabilidad: Existe desde Java 1.2 (1998), por lo que es muy estable y ampliamente utilizado en
+        proyectos más antiguos.
+    </li>
+    <li>Integración con herramientas antiguas: Es ideal para aplicaciones legadas que ya están basadas en Swing.</li>
+    <li>Documentación abundante: Tiene una enorme cantidad de documentación, ejemplos y soporte en la comunidad.</li>
+    <li>Ligero: Comparado con JavaFX, tiene una curva de aprendizaje más baja para proyectos pequeños y simples.</li>
+    <li>Compatibilidad: Swing es compatible con todas las versiones modernas de Java.</li>
+</ol>
+<h4>Desventajas:</h4>
+<ol>
+    <li>Interfaz desactualizada: Su apariencia es más básica y menos moderna comparada con JavaFX.</li>
+    <li>Poca personalización gráfica: Aunque es posible personalizar los componentes, no tiene un enfoque directo en el
+        diseño atractivo.
+    </li>
+    <li>Limitaciones de escalabilidad: No es ideal para aplicaciones con interfaces complejas o de gran escala.</li>
+</ol>
+<h3>2. JavaFX</h3>
+<h4>Ventajas:</h4>
+
+Interfaz moderna: JavaFX utiliza CSS para estilizar componentes, lo que permite crear interfaces mucho más modernas y
+atractivas.
+Arquitectura basada en Scene Graph: Ofrece un enfoque más avanzado para manejar interfaces, lo que facilita diseños
+complejos.
+Multimedia avanzada: Tiene soporte nativo para audio, video y gráficos 3D, lo que lo hace ideal para aplicaciones
+multimedia.
+Herramientas como Scene Builder: Facilitan el diseño visual de la interfaz sin necesidad de codificar todo manualmente.
+Soporte para FXML: Permite separar la lógica del diseño usando archivos XML, lo que mejora la mantenibilidad y el
+trabajo en equipo.
+Integración moderna: Tiene soporte para tecnologías como WebView (motor basado en WebKit para mostrar contenido web).
+Soporte para aplicaciones móviles: Con herramientas como Gluon, puedes usar JavaFX para desarrollar aplicaciones
+multiplataforma (escritorio, web y móvil).
+<h4>Desventajas:</h4>
+<li>Curva de aprendizaje más pronunciada: Al ser más avanzado y tener más funcionalidades, puede ser más complicado para
+    principiantes.
+</li>
+<li>Compatibilidad: No está incluido en el JDK desde Java 11, por lo que requiere instalación adicional. Sin embargo,
+    hay distribuciones de Java como OpenJFX que facilitan esta integración.
+</li>
+<li>Menos comunidad: Aunque JavaFX ha crecido en popularidad, su comunidad sigue siendo menor comparada con Swing.</li>
+<li>Comparación clave entre Swing y JavaFX</li>
+<h3>Comparativa Resumida</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Aspecto</th>
+        <th>Swing</th>
+        <th>JavaFX</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Apariencia</td>
+        <td>Básica y cuadriculada</td>
+        <td>Moderna y personalizable</td>
+    </tr>
+    <tr>
+        <td>Curva de aprendizaje</td>
+        <td>Baja</td>
+        <td>Moderada</td>
+    </tr>
+    <tr>
+        <td>
+            Soporte multimedia
+        </td>
+        <td>
+            Limitado
+        </td>
+        <td>
+            Avanzado (audio, video, gráficos 3D)
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+Estilización Limitada (código Java) CSS y FXML
+Arquitectura Basada en componentes Basada en Scene Graph
+Compatibilidad Integrado en todas las versiones Desde Java 11, requiere OpenJFX
+Rendimiento Suficiente para aplicaciones simples Mejor para aplicaciones gráficas y complejas
+<h3>¿Cuál es mejor para tu caso?</h3>
+Usa Swing si:
+Estás trabajando en proyectos legados o aplicaciones existentes basadas en Swing.
+Necesitas una solución rápida y simple para crear aplicaciones pequeñas con interfaces básicas.
+No te importa mucho la apariencia moderna.
+Usa JavaFX si:
+Quieres crear una interfaz de usuario moderna, atractiva y altamente personalizable.
+Necesitas trabajar con multimedia avanzada o gráficos complejos.
+Quieres una separación clara entre diseño y lógica (gracias a FXML).
+Estás construyendo una aplicación para el futuro y buscas usar tecnologías más modernas.
+<h3>Conclusión</h3>
+Para proyectos nuevos y modernos, JavaFX es generalmente la mejor opción debido a sus capacidades avanzadas y soporte
+para interfaces gráficas más atractivas. Sin embargo, si necesitas algo rápido, simple, o estás trabajando con sistemas
+antiguos, Swing sigue siendo una alternativa válida.
+
+<h2>Estructura Basica</h2>
+<p class="code">
+
+    public class Main {
+
+
+    public static void main(String[] args) {
+    System.out.println("Progrma iniciado");
+    createWindow();
+    }
+
+    public static void createWindow() {
+    JFrame jframe = new JFrame("Titulo Ventana");
+    jframe.setSize(500, 400);
+    jframe.setDefaultCloseOperation(3);
+    String rutaIcon = "/resources/img/java-logo-png.png";
+    Image icon = (new ImageIcon((URL)Objects.requireNonNull(Main.class.getResource(rutaIcon)))).getImage();
+    jframe.setIconImage(icon);
+    JLabel jLabel = new JLabel("Etiqueta");
+    jframe.getContentPane().add(jLabel);
+    jframe.setVisible(true);
+    }
+    }
+</p>
+<h2>
+    <h3>JFrame</h3>
+    <h3>JPane</h3>
+    <h3>JLabel</h3>
+    <h3>TextField</h3>
+    <h3>JBotton</h3>
+    <h3>JMenuBar</h3>
+</h2>
+<h2>Layout</h2>
+<h3>FlowLayout</h3>
+<h3>BorderLayout</h3>
+<h3>GridLayout</h3>
+
+
+</body>
+</html>
