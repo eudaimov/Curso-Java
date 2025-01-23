@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Swing</title>
+    <link href="./img/JavaIcon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="./style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -33,29 +35,44 @@
 </ol>
 <h3>2. JavaFX</h3>
 <h4>Ventajas:</h4>
-
-Interfaz moderna: JavaFX utiliza CSS para estilizar componentes, lo que permite crear interfaces mucho más modernas y
-atractivas.
-Arquitectura basada en Scene Graph: Ofrece un enfoque más avanzado para manejar interfaces, lo que facilita diseños
-complejos.
-Multimedia avanzada: Tiene soporte nativo para audio, video y gráficos 3D, lo que lo hace ideal para aplicaciones
-multimedia.
-Herramientas como Scene Builder: Facilitan el diseño visual de la interfaz sin necesidad de codificar todo manualmente.
-Soporte para FXML: Permite separar la lógica del diseño usando archivos XML, lo que mejora la mantenibilidad y el
-trabajo en equipo.
-Integración moderna: Tiene soporte para tecnologías como WebView (motor basado en WebKit para mostrar contenido web).
-Soporte para aplicaciones móviles: Con herramientas como Gluon, puedes usar JavaFX para desarrollar aplicaciones
-multiplataforma (escritorio, web y móvil).
+<ol>
+    <li>Interfaz moderna: JavaFX utiliza CSS para estilizar componentes, lo que permite crear interfaces mucho más
+        modernas y atractivas.
+    </li>
+    <li>Arquitectura basada en Scene Graph: Ofrece un enfoque más avanzado para manejar interfaces, lo que facilita
+        diseños
+        complejos.
+    </li>
+    <li>Multimedia avanzada: Tiene soporte nativo para audio, video y gráficos 3D, lo que lo hace ideal para
+        aplicaciones
+        multimedia.
+    </li>
+    <li>Herramientas como Scene Builder: Facilitan el diseño visual de la interfaz sin necesidad de codificar todo
+        manualmente.
+        Soporte para FXML: Permite separar la lógica del diseño usando archivos XML, lo que mejora la mantenibilidad y
+        el
+        trabajo en equipo.
+    </li>
+    <li>Integración moderna: Tiene soporte para tecnologías como WebView (motor basado en WebKit para mostrar contenido
+        web).
+        Soporte para aplicaciones móviles: Con herramientas como Gluon, puedes usar JavaFX para desarrollar aplicaciones
+        multiplataforma (escritorio, web y móvil).
+    </li>
+</ol>
 <h4>Desventajas:</h4>
-<li>Curva de aprendizaje más pronunciada: Al ser más avanzado y tener más funcionalidades, puede ser más complicado para
-    principiantes.
-</li>
-<li>Compatibilidad: No está incluido en el JDK desde Java 11, por lo que requiere instalación adicional. Sin embargo,
-    hay distribuciones de Java como OpenJFX que facilitan esta integración.
-</li>
-<li>Menos comunidad: Aunque JavaFX ha crecido en popularidad, su comunidad sigue siendo menor comparada con Swing.</li>
-<li>Comparación clave entre Swing y JavaFX</li>
-<h3>Comparativa Resumida</h3>
+<ol>
+    <li>Curva de aprendizaje más pronunciada: Al ser más avanzado y tener más funcionalidades, puede ser más complicado
+        para
+        principiantes.
+    </li>
+    <li>Compatibilidad: No está incluido en el JDK desde Java 11, por lo que requiere instalación adicional. Sin
+        embargo,
+        hay distribuciones de Java como OpenJFX que facilitan esta integración.
+    </li>
+    <li>Menos comunidad: Aunque JavaFX ha crecido en popularidad, su comunidad sigue siendo menor comparada con Swing.
+    </li>
+</ol>
+<h3>Tabla - Resumen</h3>
 <table>
     <thead>
     <tr>
@@ -86,19 +103,27 @@ multiplataforma (escritorio, web y móvil).
             Avanzado (audio, video, gráficos 3D)
         </td>
     </tr>
+    <tr>
+        <td>Estilización</td>
+        <td>Limitada(Código Java)</td>
+        <td>CSS y FXML</td>
+    </tr>
+    <tr>
+        <td>Arquitectura</td>
+        <td>Basada en componentes</td>
+        <td>Basada en Scene Graph</td>
+    </tr>
     </tbody>
 </table>
 
 
-Estilización Limitada (código Java) CSS y FXML
-Arquitectura Basada en componentes Basada en Scene Graph
 Compatibilidad Integrado en todas las versiones Desde Java 11, requiere OpenJFX
 Rendimiento Suficiente para aplicaciones simples Mejor para aplicaciones gráficas y complejas
 <h3>¿Cuál es mejor para tu caso?</h3>
-Usa Swing si:
-Estás trabajando en proyectos legados o aplicaciones existentes basadas en Swing.
-Necesitas una solución rápida y simple para crear aplicaciones pequeñas con interfaces básicas.
-No te importa mucho la apariencia moderna.
+<p>Usa Swing si:
+    Estás trabajando en proyectos legados o aplicaciones existentes basadas en Swing.
+    Necesitas una solución rápida y simple para crear aplicaciones pequeñas con interfaces básicas.
+    No te importa mucho la apariencia moderna.</p>
 Usa JavaFX si:
 Quieres crear una interfaz de usuario moderna, atractiva y altamente personalizable.
 Necesitas trabajar con multimedia avanzada o gráficos complejos.
@@ -113,7 +138,6 @@ antiguos, Swing sigue siendo una alternativa válida.
 <p class="code">
 
     public class Main {
-
 
     public static void main(String[] args) {
     System.out.println("Progrma iniciado");
@@ -133,19 +157,127 @@ antiguos, Swing sigue siendo una alternativa válida.
     }
     }
 </p>
-<h2>
-    <h3>JFrame</h3>
-    <h3>JPane</h3>
-    <h3>JLabel</h3>
-    <h3>TextField</h3>
-    <h3>JBotton</h3>
-    <h3>JMenuBar</h3>
-</h2>
+<h2>Componentes</h2>
+<h3>JFrame</h3>
+<h4>Propiedades mas comunes</h4>
+<ul>
+    <li>.setSize(500,400);</li>
+    <li>.setLocationRelativeTo(null);</li>
+    <li>.setLayout(new FlowLayout(FlowLayout.CENTER));</li>
+</ul>
+<h3>Dialog</h3>
+<pre class="code">
+            JOptionPane.showConfirmDialog(null,"Alert", "Titulo Ventana", JOptionPane.YES_OPTION);
+</pre>
+<pre class="code">
+       String options[]={"Si, de acuerto", "No, no quiero"};
+       int resultado = JOptionPane.showOptionDialog(
+                null,
+                "Desea continuar",
+                "Titulo Ventana",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]
+       );
+</pre>
+<h3>JPane</h3>
+<h3>JLabel</h3>
+<h3>TextField</h3>
+<h3>JBotton</h3>
+<h3>JMenuBar, JMenu, JMenuItem</h3>
+
 <h2>Layout</h2>
 <h3>FlowLayout</h3>
 <h3>BorderLayout</h3>
+<h3>BoxLayout</h3>
 <h3>GridLayout</h3>
+<p class="code">
+    JPanel jPanel = new JPanel();
+    //Ejemplo para varios estilos
+    LayoutManager layout = new GridLayout(4, 2,5,10);
+    LayoutManager layout = new FlowLayout(FlowLayout.LEFT);
+    LayoutManager layout = new BorderLayout();
+    jPanel.setLayout(layout);
+    //Con Border Layout
+    JPanel panelSuperior = new JPanel();
+    jPanel.add(panelSuperior,BorderLayout.NORTH);
+</p>
+<h2>Añadir Eventos.</h2>
+<p>Hay tres maneras de añadir eventos</p>
+<p>Primera forma:</p>
+<pre class="code">
+    public class Evento1 {
 
+        public static void main(String[] args) {
+            createWindow();
+        }
+        public static void createWindow(){
+            JFrame jframe = new JFrame("Titulo Ventana");
+            jframe.setSize(500,400);
+            jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JPanel panel = new JPanel();
+            panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+            JButton boton = new JButton("Boton");
+            panel.add(boton);
+            jframe.getContentPane().add(panel);
+            jframe.setVisible(true);
+            boton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                System.out.println("Boton pulsado");
+                }
+            });
+        }
+    }
+</pre>
+<p>Segunda manera:</p>
+<pre class="code">
+    public class Evento2 {
+        public static void main(String[] args) {
+            createWindow();
+        }
+        public static void createWindow(){
+            JFrame jframe = new JFrame("Titulo Ventana");
+            jframe.setSize(500,400);
+            jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JPanel panel = new JPanel();
+            panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+            JButton boton = new JButton("Boton");
+            panel.add(boton);
+            jframe.getContentPane().add(panel);
+            jframe.setVisible(true);
+            boton.addActionListener(event ->{
+                System.out.println("Boton pulsado");
+            });
+        }
+    }
+</pre>
+<p>Tercera manera:</p>
+<pre class="code">
+    public class Evento3 implements ActionListener {
+        public static void main(String[] args) {
+            createWindow();
+        }
+        public static void createWindow(){
+            JFrame jframe = new JFrame("Titulo Ventana");
+            jframe.setSize(500,400);
+            jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JPanel panel = new JPanel();
+            panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+            JButton boton = new JButton("Boton");
+            panel.add(boton);
+            jframe.getContentPane().add(panel);
+            jframe.setVisible(true);
+            boton.addActionListener(new Evento3());
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Boton pulsado");
+        }
+    }
+</pre>
 
 </body>
 </html>
